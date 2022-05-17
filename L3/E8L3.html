@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preço de Venda</title>
+</head>
+<body>
+    <form action="">
+        <label for="idComp">Preço de Compra</label><br>
+        <input type="number" id="idComp" name="nmComp" step="0.01">
+        <br><br>
+
+        <button type="button" onclick="calcular()">Calcular</button><br><br>
+
+        <output id="idOut">Preço de Venda:</output>
+        
+    </form>
+    <script>
+
+        function calcular(){
+            var comp = Number(document.getElementById("idComp").value)
+            var porSeCompMen20 = comp * 0.5
+            var porSeCompMai20 = comp * 0.35
+
+            if (comp <= 20) {
+                comp = comp + porSeCompMen20
+                document.getElementById("idOut").value= "Preço de Venda: " + (comp).toFixed(2)
+            } else {
+                comp = comp + porSeCompMai20
+                document.getElementById("idOut").value= "Preço de Venda: " + (comp).toFixed(2)
+            }
+        }
+    </script>
+</body>
+</html>

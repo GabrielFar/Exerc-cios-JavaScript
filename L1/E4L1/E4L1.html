@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+</head>
+<body>
+    <form action="">
+    <label for="idPeso">Peso</label><br>
+    <input type="number" id="idPeso" name="nmPeso" min="0" step="0.01">
+    <br><br>
+
+    <label for="idAltura">Altura (m)</label><br>
+    <input type="number" id="idAltura" name="nmAltura" min="0" step="0.01">
+    <br><br>
+
+    <!--
+    <label for="idIMC">IMC</label><br>
+    <input type="text" id="idIMC" name="nmIMC" readonly>
+    <br><br>
+-->
+
+
+    <button type="button" onclick="calcular()">Calcular</button>
+    <br><br>
+
+    <output id="idOut">IMC:</output><br><br>
+    
+    </form>
+    <script>
+        var peso
+        var alt
+        var imc
+        var mensagem
+
+        function calcular(){
+            
+            peso= Number(document.getElementById("idPeso").value)
+            alt= Number(document.getElementById("idAltura").value)
+            imc = peso/(alt*alt)
+
+            if (imc <= 16.9) {
+
+            mensagem ="Abaixo do peso"
+            
+            } else {
+                
+                if (imc > 16.9 && imc <= 18.4) {
+
+                    mensagem ="Abaixo do peso"
+                    
+                } else {
+
+                    if (imc > 18.4 && imc <= 24.9) {
+
+                        mensagem ="Peso normal"
+                        
+                    } else {
+
+                        if (imc > 24.9 && imc <= 29.9) {
+
+                            mensagem ="Acima do peso"
+                            
+                        } else {
+
+                            if (imc > 29.9 && imc <= 34.9) {
+
+                                mensagem ="Obesidade Nível I"
+                                
+                            } else {
+
+                                if (imc > 34.9 && imc <= 40) {
+                                    
+                                    mensagem ="Obesidade Nível II"
+
+                                } else {
+                                
+                                    mensagem ="Obesidade Nível III"
+                                    
+                                }                            
+                            }                      
+                        } 
+                    }
+                }
+            }
+
+            document.getElementById("idOut").value ="IMC: " + imc.toFixed(2) + " - " + mensagem
+        }
+
+    </script>
+</body>
+</html>

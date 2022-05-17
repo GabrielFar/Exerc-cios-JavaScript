@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Área</title>
+</head>
+<body>
+    <form action="">
+
+        <fieldset> <legend>Calcular Áreas de Formas</legend><br>
+
+            <p><b>Círculo</b></p>
+
+                <label for="idCir">Raio</label><br>
+                <input type="number" id="idCir" name="nmCir" min="0.01">
+                <br><br>
+
+                <button type="button" onclick="calcularCir()">Calcular</button>
+                <br><br>
+
+                <output id="idOutCir">Área: </output>
+                
+                <br>
+            <hr>
+
+            <p><b>Retângulo</b></p>
+
+                <label for="idRet1">Lado 1</label><br>
+                <input type="number" id="idRet1" name="nmRet1" min="0.01">
+                <br><br>
+
+                <label for="idRet2">Lado 2</label><br>
+                <input type="number" id="idRet2" name="nmRet2" min="0.01">
+                <br><br>
+
+                <button type="button" onclick="calcularRet()">Calcular</button>
+                <br><br>
+
+                <output id="idOutRet">Área: </output>
+                
+                <br>
+            <hr>
+
+            <p><b>Triângulo Retângulo</b></p>
+
+                <label for="idTriReBa">Base</label><br>
+                <input type="number" id="idTriReBa" name="nmTriReBa" min="0.01">
+                <br><br>
+
+                <label for="idTriReAlt">Altura</label><br>
+                <input type="number" id="idTriReAlt" name="nmTriReAlt" min="0.01">
+                <br><br>
+
+                <button type="button" onclick="calcularTriRe()">Calcular</button>
+                <br><br>
+
+                <output id="idOutTriRe">Área: </output>
+                
+                <br>
+            <hr>
+            
+            <p><b>Triângulo Equilátero</b></p>
+
+                <label for="idTriEq">Lado</label><br>
+                <input type="number" id="idTriEq" name="nmTriEq" min="0.01">
+                <br><br>
+
+                <button type="button" onclick="calcularTriEq()">Calcular</button>
+                <br><br>
+
+                <output id="idOutTriEq">Área: </output>
+
+        </fieldset>
+    </form>
+    <script>
+        var raio
+        var lado1
+        var lado2
+        var base
+        var alt
+        var ladotri
+        var raiz = Math.sqrt(3)
+        var pi = Math.PI
+        
+
+        function calcularCir(){
+            
+            raio = Number(document.getElementById("idCir").value)
+            document.getElementById("idOutCir").value = "Área: " + (pi * raio**2).toFixed(2)
+        }
+
+        function calcularRet(){
+            
+            lado1 = Number(document.getElementById("idRet1").value)
+            lado2 = Number(document.getElementById("idRet2").value)
+            document.getElementById("idOutRet").value = "Área: " + (lado1 * lado2).toFixed(2)
+        }
+
+        function calcularTriRe(){
+            
+            base = Number(document.getElementById("idTriReBa").value)
+            alt = Number(document.getElementById("idTriReAlt").value)
+            document.getElementById("idOutTriRe").value = "Área: " + ((base * alt)/2).toFixed(2)
+        }
+
+        function calcularTriEq(){
+            
+            ladotri = Number(document.getElementById("idTriEq").value)
+            document.getElementById("idOutTriEq").value = "Área: " + (((ladotri**2)* raiz)/4).toFixed(2)
+        }
+
+    </script>
+</body>
+</html>

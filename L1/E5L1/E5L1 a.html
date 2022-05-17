@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peso Ideal</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+        <label for="idAlt">Altura (m)</label><br>
+        <input type="number" id="idAlt" name="nmAlt" step="0.01" min="0">
+        <br><br>
+
+        <button type="button" onclick="calcularMas()">Calcular Peso Masculino</button>
+
+        <button type="button" onclick="calcularFem()">Calcular Peso Feminino</button>
+        <br><br>
+        
+        <output id="idOut"> Peso Ideal: </output><br><br>
+
+        <!--
+
+        <label for="idOut">Peso Ideal</label><br>
+        <input type="number" id="idOut" name="nmOut" readonly>
+        <br><br>
+
+        -->
+
+        </fieldset>
+
+    </form>
+    <script>
+            
+        var alt
+
+        function calcularMas(){
+            
+            alt= Number(document.getElementById("idAlt").value)
+
+            document.getElementById("idOut").value = "Peso Ideal: " + ((72.7 * alt) - 58).toFixed(2)
+        }
+
+        function calcularFem(){
+            
+            alt= Number(document.getElementById("idAlt").value)
+
+            document.getElementById("idOut").value = "Peso Ideal: " + ((62.1 * alt) - 44.7).toFixed(2)
+        }
+
+    </script>
+</body>
+</html>

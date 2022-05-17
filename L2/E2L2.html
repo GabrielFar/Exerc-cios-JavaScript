@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dirigir</title>
+</head>
+<body>
+    <form action="">
+        <label for="idIdade">Insira sua Idade</label><br>
+        <input type="number" id="idIdade" name="nmIdade" min="0">
+        <br><br>
+
+        <button type="button" onclick="verificar()">Verificar</button>
+        <br><br>
+
+        <output id="idOut">Situação:</output>
+
+    </form>
+    <script>
+        
+        var idade
+
+        function verificar() {
+            
+            idade = document.getElementById("idIdade").value
+
+            if (idade >= 18) {
+                
+                document.getElementById("idOut").value = "Situação: Você pode dirigir"
+            } else {
+                
+                document.getElementById("idOut").value = "Situação: Você não pode dirigir"
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peso Ideal</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+        <label for="idAlt">Altura (m)</label><br>
+        <input type="number" id="idAlt" name="nmAlt" step="0.01" min="0">
+        <br><br>
+
+        <input type="radio" name="nmGenero" id="idMasc" checked>
+        <label for="idMasc">Masculino</label>
+
+        <input type="radio" name="nmGenero" id="idFem">
+        <label for="idFem">Feminino</label>
+        <br><br>
+
+        <button type="button" onclick="calcular()">Calcular Peso</button>
+        <br><br>
+        
+        <output id="idOut"> Peso Ideal: </output><br><br>
+
+        <!--
+
+        <label for="idOut">Peso Ideal</label><br>
+        <input type="number" id="idOut" name="nmOut" readonly>
+        <br><br>
+
+        -->
+
+        </fieldset>
+
+    </form>
+    <script>
+            
+        var alt
+        var masc
+        var fem
+        var peso
+
+        function calcular(){
+            
+            alt= Number(document.getElementById("idAlt").value)
+            masc = document.getElementById("idMasc").checked
+            fem = document.getElementById("idFem").checked
+
+            if (masc == true) {
+                
+                peso = (72.7 * alt) - 58
+            } else {
+
+                peso = (62.1 * alt) - 44.7              
+            }
+
+            document.getElementById("idOut").value = "Peso Ideal: " + peso.toFixed(2)
+        }
+
+    </script>
+</body>
+</html>

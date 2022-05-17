@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Está entre 30 e 90?</title>
+</head>
+<body>
+    <form action="">
+        <label for="idNum">Insira um número para comparação</label><br>
+        <input type="Number" id="idNum" name="nmNum">
+        <br><br>
+        
+        <button type="button" onclick="testar()">Testar</button>
+        <br><br>
+
+        <output id="idOut">Está entre 30 e 90? </output>
+    </form>
+    <script>
+        function testar() {
+             var num = document.getElementById("idNum").value
+
+            if (num < 90 && num > 30) {
+                document.getElementById("idOut").value = "Está entre 30 e 90? Sim"
+            }
+            else{
+                document.getElementById("idOut").value = "Está entre 30 e 90? Não"
+            }
+        }
+    </script>
+</body>
+</html>

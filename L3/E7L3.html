@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salário Líquido</title>
+</head>
+<body>
+    <form action="">
+        <label for="idSal">Insira o Valor do seu Salário</label><br>
+        <input type="number" id="idSal" name="nmSal" step="0.01">
+        <br><br>
+
+        <button type="button" onclick="calcular()">Calcular</button>
+        <br><br>
+
+        <output id="idOut">Salário Líquido: </output>
+
+    </form>
+    <script>
+
+        function calcular() {
+            var sal = Number(document.getElementById("idSal").value)
+            var por1 = sal * 0.25
+            var por2 = sal * 0.3
+            var por3 = sal * 0.35
+
+            if (sal <= 600) {
+                document.getElementById("idOut").value = "Salário Líquido: " + (sal).toFixed(2)
+            } else if(sal > 600 && sal <= 1200){
+                sal = sal - por1
+                document.getElementById("idOut").value = "Salário Líquido: " + (sal).toFixed(2)
+            } else if(sal > 1200 && sal <= 2000){
+                sal = sal - por2
+                document.getElementById("idOut").value = "Salário Líquido: " + (sal).toFixed(2)
+            } else{
+                sal = sal - por3
+                document.getElementById("idOut").value = "Salário Líquido: " + (sal).toFixed(2)
+            }
+        }
+    </script>
+</body>
+</html>

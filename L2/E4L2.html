@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cliente</title>
+</head>
+<body>
+    <form action="">
+        <label for="idNome">Nome do Correntista</label><br>
+        <input type="text" id="idNome" name="nmNome" autocomplete="off">
+        <br><br>
+
+        <label for="idNomeB">Nome do Banco</label><br>
+        <input type="text" id="idNomeB" name="nmNomeB">
+        <br><br>
+
+        <label for="idNumC">Número da Conta</label><br>
+        <input type="text" id="idNumC" name="nmNumC">
+        <br><br>
+
+        <label for="idLimC">Limite de Crédito</label><br>
+        <input type="number" id="idLimC" name="nmLimC" step="0.01" disabled value="200">
+        <br><br>
+
+        <label for="idSaldo">Saldo Atual</label><br>
+        <input type="number" id="idSaldo" name="nmSaldo" step="0.01" disabled value="10">
+        <br><br>
+
+        <hr>
+        <p>Movimentação</p>
+
+        <input type="radio" id="idCred" name="nmMovi" checked>
+        <label for="idCred" >Crédito</label>
+
+        <input type="radio" id="idDeb" name="nmMovi">
+        <label for="idDeb" >Débito</label>
+        <br><br>
+
+        <label for="idValor">Valor</label><br>
+        <input type="number" id="idValor" name="nmValor" step="0.01">
+        <br><br>
+
+        <button type="button" onclick="calcular()">Fazer Transferência</button>
+        <br><br>
+
+        <button type="button" onclick="extrato()">Extrato</button>
+        <br><br>
+
+        <output id="idOut">Status:  </output>
+        <br><br>
+
+        <output id="idOut2">Extrato: </output>
+
+    </form>
+    <script>
+        var nome
+        var banco 
+        var conta 
+        var limCredito 
+        var saldoAtual
+        var cred 
+        var deb 
+        var valor 
+
+        function calcular() {
+
+            nome = document.getElementById("idNome").value
+            banco = document.getElementById("idNomeB").value
+            conta = document.getElementById("idNumC").value
+            limCredito = 200
+            saldoAtual = Number(document.getElementById("idSaldo").value)
+            cred = document.getElementById("idCred").checked
+            deb = document.getElementById("idDeb").checked
+            valor = Number(document.getElementById("idValor").value)
+
+            if (deb == true) {
+                if (limCredito >= valor - saldoAtual){
+                    
+                    saldoAtual = saldoAtual - valor
+                    document.getElementById("idOut").value = "Status: Operação Realizada com Sucesso"
+                } else {
+                    document.getElementById("idOut").value = "Status: Saldo Insuficiente"
+                }
+            } else {
+                saldoAtual = saldoAtual + valor
+                document.getElementById("idOut").value = "Status: Operação Realizada com Sucesso"
+            }
+            document.getElementById("idSaldo").value = saldoAtual
+        }
+
+        function extrato() {
+            
+            document.getElementById("idOut2").value = "Extrato: Nome: " + nome + " - Banco: " + banco + 
+                                                    " - Conta: " + conta + " - Saldo: " + saldoAtual
+        }
+
+    </script>
+</body>
+</html>

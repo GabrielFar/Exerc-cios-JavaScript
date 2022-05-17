@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma</title>
+</head>
+<body>
+    <form action="">
+        <label for="idNum1">Número 1</label><br>
+        <input type="number" id="idNum1" name="nmNum1">
+        <br><br>
+
+        <label for="idNum2">Número2</label><br>
+        <input type="number" id="idNum2" name="nmNum2">
+        <br><br>
+
+        <label for="idRes">Resultado</label><br>
+        <input type="number" id="idRes" name="nmRes">
+        <br><br>
+
+        <button type="button" onclick="pegarDados()">Somar</button>
+    </form>
+    <script>
+
+        /*forma que o prof mostrou*/
+
+        function pegarDados(){
+           var num1= Number(document.getElementById("idNum1").value)
+           var num2= Number(document.getElementById("idNum2").value)
+
+           var res= num1 + num2
+
+            document.getElementById("idRes").value= res
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alistamento</title>
+</head>
+<body>
+    <form action="">
+        <label for="idNasc">Insira seu Ano de Nascimento</label><br>
+        <input type="number" id="idNasc" name="nmNasc">
+        <br><br>
+
+        <button type="button" onclick="verificar()">Verificar</button>
+        <br><br>
+
+        <output id="idOut"></output>
+    </form>
+    <script>
+        
+        function verificar() {
+            
+            var nasc = Number(document.getElementById("idNasc").value)
+            var ida = 2022 - nasc
+            var fora = ida - 18
+            var fal = 18 - ida
+
+            if (ida >= 18) {
+                document.getElementById("idOut").value = "Já se passaram " + fora + " anos do alistamento"
+            } else {
+                document.getElementById("idOut").value = "Faltam " + fal + " anos para se alistar"
+            }
+        }
+    </script>
+</body>
+</html>

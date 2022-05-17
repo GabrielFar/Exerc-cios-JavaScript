@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma</title>
+</head>
+<body>
+    <form action="">
+        <label for="idNum1">Número 1</label><br>
+        <input type="number" id="idNum1" name="nmNum1">
+        <br><br>
+
+        <label for="idNum2">Número2</label><br>
+        <input type="number" id="idNum2" name="nmNum2">
+        <br><br>
+
+        <label for="idRes">Resultado</label><br>
+        <input type="number" id="idRes" name="nmRes" readonly>
+        <br><br>
+
+        <button type="button" onclick="somar()">Somar</button>
+        <button type="button" onclick="subtrair()">Subtrair</button>
+        <button type="button" onclick="multiplicar()">Multiplicar</button>
+        <button type="button" onclick="dividir()">Dividir</button>
+    </form>
+    <script>
+        var num1
+        var num2
+
+        function somar(){
+            num1= document.getElementById("idNum1").value
+            num2= document.getElementById("idNum2").value
+
+            document.getElementById("idRes").value= Number(num1) + Number(num2)
+        }
+
+        function subtrair(){
+            num1= document.getElementById("idNum1").value
+            num2= document.getElementById("idNum2").value
+
+            document.getElementById("idRes").value= num1 - num2
+        }
+
+        function multiplicar(){
+            num1= document.getElementById("idNum1").value
+            num2= document.getElementById("idNum2").value
+
+            document.getElementById("idRes").value= num1 * num2
+        }
+
+        function dividir(){
+            num1= document.getElementById("idNum1").value
+            num2= document.getElementById("idNum2").value
+
+            document.getElementById("idRes").value= (num1 / num2).toFixed(2)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <form action="">
+        <label for="idNum1">Número 1</label><br>
+        <input type="number" id="idNum1" name="nmNum1">
+        <br><br>
+
+        <label for="idNum2">Número2</label><br>
+        <input type="number" id="idNum2" name="nmNum2">
+        <br><br>
+        
+        <input type="radio" id="idAdi" name="nmOpe" checked>
+        <label for="idAdi">Adição</label><br>
+        <br>
+        <input type="radio" id="idSub" name="nmOpe">
+        <label for="idSub">Subtração</label><br>
+        <br>
+        <input type="radio" id="idMul" name="nmOpe">
+        <label for="idMul">Multiplicação</label><br>
+        <br>
+        <input type="radio" id="idDiv" name="nmOpe">
+        <label for="idDiv">Divisão</label><br>
+        <br>
+
+        <output id="idOut">Resultado: </output>
+        <br><br>
+
+        <button type="button" onclick="operacao()">Calcular</button>
+    
+    </form>
+    <script>
+
+        function operacao(){
+            var num1 = Number(document.getElementById("idNum1").value)
+            var num2 = Number(document.getElementById("idNum2").value)
+            var adi = document.getElementById("idAdi").checked
+            var sub = document.getElementById("idSub").checked
+            var mul = document.getElementById("idMul").checked
+            var div = document.getElementById("idDiv").checked
+
+            if (adi == true) {
+                document.getElementById("idOut").value ="Resultado: " + (num1 + num2)
+            } else if(sub == true){
+                document.getElementById("idOut").value ="Resultado: " + (num1 - num2)
+            } else if(mul == true){
+                document.getElementById("idOut").value ="Resultado: " + (num1 * num2)
+            }else{
+                document.getElementById("idOut").value ="Resultado: " + (num1 / num2)
+            }
+        }
+
+    </script>
+</body>
+</html>

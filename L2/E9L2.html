@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>É um Triângulo?</title>
+</head>
+<body>
+    <form action="">
+        <label for="idReta1">Segmento 1</label><br>
+        <input type="number" id="idReta1" name="nmReta1">
+        <br><br>
+
+        <label for="idReta2">Segmento 2</label><br>
+        <input type="number" id="idReta2" name="nmReta2">
+        <br><br>
+
+        <label for="idReta3">Segmento 3</label><br>
+        <input type="number" id="idReta3" name="nmReta3">
+        <br><br>
+
+        <button type="button" onclick="calcular()">Calcular</button>
+        <br><br>
+
+        <output id="idOut">É um Triângulo?</output>
+
+    </form>
+    <script>
+
+        function calcular() {
+            
+            var reta1 = Number(document.getElementById("idReta1").value)
+            var reta2 = Number(document.getElementById("idReta2").value)
+            var reta3 = Number(document.getElementById("idReta3").value)
+            var soma12 = reta1 + reta2
+            var soma13 = reta1 + reta3
+            var soma23 = reta2 + reta3
+
+            if (soma12 > reta3 && soma13 > reta2 && soma23 > reta1) {
+
+                document.getElementById("idOut").value = "É um Triângulo? Sim"
+            } else {
+                
+                document.getElementById("idOut").value = "É um Triângulo? Não"
+            }   
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperatura</title>
+</head>
+<body>
+    <form action="">
+
+        <label for="idTemp1">Temperatura</label><br>
+        <input type="number" id="idTemp1" name="nmTemp1" step="0.01">
+        <br><br>
+
+        <button type="button" onclick="lerTemp()">Resgistrar Temperatura</button>
+        <br><br>
+
+        <!--
+        <label for="idTemp2">Temperatura 2</label><br>
+        <input type="number" id="idTemp2" name="nmTemp2" step="0.01">
+        <br><br>
+
+        <label for="idTemp3">Temperatura 3</label><br>
+        <input type="number" id="idTemp3" name="nmTemp3" step="0.01">
+        <br><br>
+        -->
+        <label for="idTempHoje">Temperatura Hoje</label><br>
+        <input type="number" id="idTempHoje" name="nmTempHoje" step="0.01">
+        <br><br>
+
+        <button type="button" onclick="calcular()">Calcular Média</button>
+        <br><br>
+        
+        <output id="idOut">Média: </output>
+
+    </form>
+    <script>
+        var temp1
+        var temp2
+        var temp3
+        var tempH
+        var media
+        var mens
+        var somaTemp = 0
+        var contaTemp = 0
+
+        function lerTemp() {
+            
+            somaTemp = somaTemp + Number(document.getElementById("idTemp1").value)
+            contaTemp++ /* mesma coisa que: contaTemp = contaTemp + 1*/
+            document.getElementById("idTemp1").value = "" /* limpa campo Temperatura*/
+        }
+        function calcular() {
+
+            tempH = document.getElementById("idTempHoje").value
+            media = somaTemp/contaTemp
+
+            if (tempH > media) {
+                
+                document.getElementById("idOut").value = "Média: " + media + " - Temperatura de Hoje (" + 
+                tempH + ") é Maior que a Média"
+            } else {
+                if (tempH < media) {
+                    
+                    document.getElementById("idOut").value = "Média: " + media + " - Temperatura de Hoje (" + 
+                    tempH + ") é Menor que a Média"
+                } else {
+                    document.getElementById("idOut").value = "Média: " + media + " - Temperatura de Hoje (" + 
+                    tempH + ") é Igual à Média"
+                }              
+            }
+        }
+
+    </script>
+</body>
+</html>

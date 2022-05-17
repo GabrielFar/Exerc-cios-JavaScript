@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preço de Venda</title>
+</head>
+<body>
+    <form action="">
+        <label for="idComp">Preço de Compra</label><br>
+        <input type="number" id="idComp" name="nmComp">
+        <br><br>
+
+        <label for="idCust">Custo Fixo</label><br>
+        <input type="number" id="idCust" name="nmCust">
+        <br><br>
+
+        <button type="button" onclick="calcular()">Calcular</button><br><br>
+
+        <output id="idOut">Preço de Venda:</output>
+        
+    </form>
+    <script>
+        var comp
+        var cust
+        var res
+        var por 
+        var vend
+
+        function calcular(){
+            comp = Number(document.getElementById("idComp").value)
+            cust = Number(document.getElementById("idCust").value)
+            res = comp + cust
+            por = res*0.35
+            vend = res + por
+            document.getElementById("idOut").value = "Preço de Venda: " + vend
+        }
+    </script>
+</body>
+</html>

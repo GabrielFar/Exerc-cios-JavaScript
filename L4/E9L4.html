@@ -35,13 +35,30 @@
             let final = Number(document.getElementById("idNum2").value)
             let incre = Number(document.getElementById("idNum3").value)
             
-            do {
-                texto = texto + inicial + " "
-                inicial = inicial + incre
-
-            } while (inicial <= final);
+            if (final > inicial) {
+                
+                do {
+                    texto = texto + inicial + " "
+                    inicial = inicial + incre
+                    
+                } while (inicial <= final);
             
-            out.value = texto + "Acabou" 
+                out.value = texto + "Acabou" 
+                
+            } else if(final < inicial){
+
+                do {
+                    texto = texto + final + " "
+                    final = final + incre
+                    
+                } while (inicial >= final);
+
+                out.value = texto + "Acabou" 
+            } else {
+                out.value = "Valores Iguais!" 
+            }
+            
+            
         }
         
     </script>

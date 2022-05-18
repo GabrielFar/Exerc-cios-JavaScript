@@ -6,35 +6,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Contador</title>
     </head>
-    <body>
-        <label for="idNum">Insira qualquer Número Inteiro Positivo</label><br>
-        <input type="number" id="idNum">
-        <br><br>
-
-        <button type="button" onclick="contar()">Contar</button>
-        <br><br>
 
         <output id="idOut"></output>
     </body>
     <script>
-    
-        var texto = ""
         var out = document.getElementById("idOut")
+        var texto = ""
+        var contador = 30
+        
+        while (contador > -1) {        
+            let res = contador % 4
 
-        function contar() {
-
-            let inicio = 0
-            texto = ""
-            let num = Number(document.getElementById("idNum").value)
-
-            while (inicio <= num) {
-                texto = texto + inicio + " "
-                inicio++ 
+            if (res == 0) {
+                texto = texto + "[" + contador + "]" + " "
+            } else {
+                texto = texto + contador + " "
             }
-
-            out.value = "Inicio " + texto + " Fim..."
-
-        }    
+            contador--
+        }
+        out.value = "Inicio " + texto + " Fim..."
+        
         
     </script>
 </html>

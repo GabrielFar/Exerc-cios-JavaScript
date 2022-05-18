@@ -26,34 +26,33 @@
     </body>
     <script>
 
-        
-        var texto = ""
         var out = document.getElementById("idOut")
 
         function contar() {
             let inicial = Number(document.getElementById("idNum1").value)
             let final = Number(document.getElementById("idNum2").value)
             let incre = Number(document.getElementById("idNum3").value)
-            
+            let texto = ""
             if (final > inicial) {
                 
                 do {
                     texto = texto + inicial + " "
                     inicial = inicial + incre
                     
-                } while (inicial <= final);
+                } while (inicial < final);
             
                 out.value = texto + "Acabou" 
                 
             } else if(final < inicial){
 
                 do {
-                    texto = texto + final + " "
-                    final = final + incre
+                    texto = texto + inicial + " "
+                    inicial = inicial - incre
                     
-                } while (inicial >= final);
+                } while (inicial > final);
 
                 out.value = texto + "Acabou" 
+
             } else {
                 out.value = "Valores Iguais!" 
             }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contador</title>
+    </head>
+    <body>
+        <label for="idNum1">Digite o primeiro valor</label><br>
+        <input type="number" id="idNum1">
+        <br><br>
+
+        <label for="idNum2">Digite o último valor</label><br>
+        <input type="number" id="idNum2">
+        <br><br>
+
+        <input type="radio" id="idPar" name="nmNums" checked>
+        <label for="idPar">Pares</label>
+        <br><br>
+
+        <input type="radio" id="idImp" name="nmNums">
+        <label for="idImp">Ímpares</label>
+        <br><br>
+
+        <button type="button" onclick="contar()">Contar</button>
+        <br><br>
+
+        <output id="idOut"></output>
+    </body>
+    <script>
+
+        var out = document.getElementById("idOut")
+
+        function contar() {
+            let inicial = Number(document.getElementById("idNum1").value)
+            let final = Number(document.getElementById("idNum2").value)
+            let par = document.getElementById("idPar").checked
+            let impar = document.getElementById("idImp").checked
+            let texto = ""
+            let res = inicial%2
+
+            if (par) {
+                
+                if (res == 1) {
+                    inicial ++
+                    while (inicial < final) {
+                        texto = texto + inicial + " "
+                        inicial = inicial + 2
+                    }
+
+                } else {
+                    while (inicial < final) {
+                        texto = texto + inicial + " "
+                        inicial = inicial + 2
+                    }
+                }
+
+                out.value = texto + "Acabou"
+
+            } else {
+
+                if (res == 1) {
+                    while (inicial < final) {
+                        texto = texto + inicial + " "
+                        inicial = inicial + 2
+                    }
+
+                } else {
+                    inicial ++
+                    while (inicial < final) {                        
+                        texto = texto + inicial + " "
+                        inicial = inicial + 2
+                    }
+                }
+
+                out.value = texto + "Acabou"
+    
+            }
+        }
+        
+    </script>
+</html>

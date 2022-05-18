@@ -26,12 +26,12 @@
     </body>
     <script>
 
-        var out = document.getElementById("idOut")
+        var out = document.querySelector("#idOut")
 
         function contar() {
-            let inicial = Number(document.getElementById("idNum1").value)
-            let final = Number(document.getElementById("idNum2").value)
-            let incre = Number(document.getElementById("idNum3").value)
+            let inicial = Number(document.querySelector("#idNum1").value)
+            let final = Number(document.querySelector("#idNum2").value)
+            let incre = Number(document.querySelector("#idNum3").value)
             let texto = ""
             
             if (final > inicial) {

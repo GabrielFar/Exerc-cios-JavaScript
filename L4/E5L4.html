@@ -19,13 +19,13 @@
     <script>
     
         var texto = ""
-        var out = document.getElementById("idOut")
+        var out = document.querySelector("#idOut")
 
         function contar() {
 
             let inicio = 0
             texto = ""
-            let num = Number(document.getElementById("idNum").value)
+            let num = Number(document.querySelector("#idNum").value)
 
             while (inicio <= num) {
                 texto = texto + inicio + " "

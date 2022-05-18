@@ -30,13 +30,13 @@
     </body>
     <script>
 
-        var out = document.getElementById("idOut")
+        var out = document.querySelector("#idOut")
 
         function contar() {
-            let inicial = Number(document.getElementById("idNum1").value)
-            let final = Number(document.getElementById("idNum2").value)
-            let par = document.getElementById("idPar").checked
-            let impar = document.getElementById("idImp").checked
+            let inicial = Number(document.querySelector("#idNum1").value)
+            let final = Number(document.querySelector("#idNum2").value)
+            let par = document.querySelector("#idPar").checked
+            let impar = document.querySelector("#idImp").checked
             let texto = ""
             let res = inicial%2
 

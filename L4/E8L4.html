@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contador</title>
+    </head>
+    <body>
+        <label for="idNum1">Digite o primeiro Valor</label><br>
+        <input type="number" id="idNum1">
+        <br><br>
+
+        <label for="idNum2">Digite o último Valor</label><br>
+        <input type="number" id="idNum2">
+        <br><br>
+
+        <label for="idNum3">Digite o incremento</label><br>
+        <input type="number" id="idNum3">
+        <br><br>
+
+        <button type="button" onclick="contar()">Contar</button>
+        <br><br>
+
+        <output id="idOut"></output>
+    </body>
+    <script>
+
+        var inicial = Number(document.getElementById("idNum1").value)
+        var final = Number(document.getElementById("idNum2").value)
+        var incre = Number(document.getElementById("idNum3").value)
+        var texto = ""
+        var out = document.getElementById("idOut")
+
+        while (inicial <= final) {
+
+            texto = texto + (inicial + incre) + ""
+
+        }
+
+        out.value = Inicial + "Acabou"  
+        
+    </script>
+</html>

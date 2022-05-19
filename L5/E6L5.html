@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idades</title>
+</head>
+<body>
+    <form action="">
+        <label for="idIda">Insira as Idades</label><br>
+        <input type="number" id="idIda" name="nmIda">
+        <br><br>
+
+        <button type="button" onclick="lerIdade()">Ler Idade</button>
+        <br><br>
+
+        <button type="button" onclick="limites()">Ver Resultados</button>
+        <br>
+
+        <output id="idOut1"></output><br><br>
+        <output id="idOut2"></output><br><br>
+        <output id="idOut3"></output><br><br>
+        <output id="idOut4"></output><br><br>
+
+    </form>
+    <script>
+        var contIda = 0
+        var contaMaioresDe18 = 0
+        var contaMenoresDe5 = 0
+        var maiorIdade = -1
+        var soma = 0
+
+        function lerIdade() {
+            let idade = Number(document.querySelector("#idIda").value)
+            soma = soma + Number(document.querySelector("#idIda").value)
+            contIda++
+
+            //media
+            
+            media = soma/contIda
+
+            //+18
+
+            if (idade >= 18) {
+                contaMaioresDe18++
+            }
+            
+            //-5
+
+            if (idade <= 5) {
+                contaMenoresDe5++
+            }
+            
+            //Maior idade
+
+            if (idade > maiorIdade) {
+                maiorIdade = idade
+            }
+            
+            document.querySelector("#idIda").value = ""
+        }
+        
+        function limites() {
+            document.querySelector("#idOut1").value = "Média de Idade: " + (parseInt(media))
+            document.querySelector("#idOut2").value = "Quantidade de Maiores de 18: " + contaMaioresDe18
+            document.querySelector("#idOut3").value = "Quantidade de Menores de 5: " + contaMenoresDe5
+            document.querySelector("#idOut4").value = "Maior Idade: " + maiorIdade
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preço</title>
+</head>
+<body>
+    <form action="">
+        <label for="idPre">Insira o Preço dos Produtos</label><br>
+        <input type="number" id="idPre" name="nmPre" step="0.01">
+        <br><br>
+
+        <button type="button" onclick="lerPreço()">Ler Preço</button>
+        <br><br>
+
+        <button type="button" onclick="limites()">Ver Extremos</button>
+        <br>
+
+        <output id="idOut"></output>
+    </form>
+    <script>
+        var maiorPreço = -9999999999999
+        var menorPreço = 9999999999999
+        
+
+        function lerPreço() {
+            let preço = document.querySelector("#idPre").value
+
+            if (preço > maiorPreço) {
+                maiorPreço = preço
+            }           
+            if (preço < menorPreço) {
+                menorPreço = preço
+            }
+            document.querySelector("#idPre").value = ""
+        }
+        
+        function limites() {
+            document.querySelector("#idOut").value = "Maior Preço: " + maiorPreço + " -- Menor Preço: " + menorPreço
+        }
+    </script>
+</body>
+</html>

@@ -39,6 +39,7 @@
             let impar = document.querySelector("#idImp").checked
             let texto = ""
             let res = inicial%2
+            let qnt = 0
 
             if (par) {
                 
@@ -47,16 +48,17 @@
                     while (inicial < final) {
                         texto = texto + inicial + " "
                         inicial = inicial + 2
+                        qnt++                        
                     }
 
                 } else {
                     while (inicial < final) {
                         texto = texto + inicial + " "
                         inicial = inicial + 2
+                        qnt++
                     }
                 }
-
-                out.value = texto + "Acabou"
+                out.value = texto + "Acabou --- " + qnt + " São Pares"
 
             } else {
 
@@ -64,6 +66,7 @@
                     while (inicial < final) {
                         texto = texto + inicial + " "
                         inicial = inicial + 2
+                        qnt++
                     }
 
                 } else {
@@ -71,11 +74,10 @@
                     while (inicial < final) {                        
                         texto = texto + inicial + " "
                         inicial = inicial + 2
+                        qnt++
                     }
                 }
-
-                out.value = texto + "Acabou"
-    
+                out.value = texto + "Acabou --- " + qnt + " São Ímpares"
             }
         }
         

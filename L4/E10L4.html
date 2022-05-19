@@ -37,9 +37,32 @@
             let final = Number(document.querySelector("#idNum2").value)
             let par = document.querySelector("#idPar").checked
             let impar = document.querySelector("#idImp").checked
-            let texto = ""
-            let res = inicial%2
-            let qnt = 0
+            //let texto = ""
+            let numPares =""
+            let numImpares = ""
+            let qntPar = 0
+            let qntImpar = 0
+
+            while (inicial < final) {
+                let res = inicial % 2
+                if (res == 0) {
+                    qntPar++
+                    numPares = numPares + inicial + " "
+                } else {
+                    qntImpar++
+                    numImpares = numImpares + inicial + " "                   
+                }
+                inicial++
+            }
+
+            if (par) {
+                out.value = numPares + "Acabou --- " + qntPar + " São Pares e " + qntImpar + " São Ímpares"
+            } else {
+                out.value = numImpares + "Acabou --- " + qntPar + " São Pares e " + qntImpar + " São Ímpares"
+            }
+
+
+            /* Minha solução:
 
             if (par) {
                 
@@ -79,6 +102,7 @@
                 }
                 out.value = texto + "Acabou --- " + qnt + " São Ímpares"
             }
+            */
         }
         
     </script>

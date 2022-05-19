@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contador</title>
+    </head>
+        <output id="idOut"></output>
+    </body>
+    <script>
+        var out = document.querySelector("#idOut")
+        var texto = ""
+        var contador = 1
+        
+        while (contador <= 100) {        
+            let res3 = contador % 3
+            let res5 = contador % 5
+
+            if (res3 == 0 || res5 == 0) {
+                texto = texto + contador + " "
+            }
+            contador++
+        }
+        out.value = "Inicio " + texto + " Fim..."
+        
+        
+    </script>
+</html>

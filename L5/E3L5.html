@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteador</title>
+</head>
+<body>
+    <form action="">
+
+        <button type="button" onclick="sortear()">Sortear</button>
+        <br><br>
+
+        <output id="idOut1"></output><br>
+        <output id="idOut2"></output><br>
+        <output id="idOut3"></output><br>
+
+    </form>
+    <script>
+        var out1 = document.querySelector("#idOut1")
+        var out2 = document.querySelector("#idOut2")
+        var out3 = document.querySelector("#idOut3")
+
+        //var gerarRandom 
+        var texto1 = ""
+        var texto2 = ""
+        var texto3 = ""
+
+        function sortear() {
+
+            let contador = 0
+
+            while (contador < 10) {
+                let gerarRandom = (parseInt(Math.random() * 10) + 1)
+                let res = gerarRandom % 3
+                
+                if (gerarRandom > 5) {
+                    texto2 = texto2 + gerarRandom + " "
+                }
+                
+                if(res == 0){
+                    texto3 = texto3 + gerarRandom + " "
+                }
+
+                texto1 = texto1 + gerarRandom + " "
+                
+                contador++
+            }
+            out1.value = "Números sorteados: " + texto1
+            out2.value = "Números acima de 5: " + texto2
+            out3.value = "Números divisíveis por 3: " + texto3
+
+        }
+    </script>
+
+</body>
+</html>

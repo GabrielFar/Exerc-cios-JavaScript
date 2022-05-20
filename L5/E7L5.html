@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Adivinhação</title>
+</head>
+<body>
+    <form action="">
+
+        <label for="idChu">Inisira seu Chute</label><br>
+        <input type="number" id="idChu" name="nmChu" min="1" max="10">
+        <br><br>
+
+        <button type="button" onclick="chutar()">Chutar</button>
+        <br><br>
+
+        <output id="idOutAviso"></output><br><br>
+        <output id="idOut"></output><br>
+
+    </form>
+    <script>
+       
+        var out = document.querySelector("#idOut")
+        var outAviso = document.querySelector("#idOutAviso")
+        var num = (parseInt(Math.random() * 10) + 1)
+        var contTentativas = 2
+
+        function chutar() {
+            let chute = document.querySelector("#idChu").value            
+            
+            outAviso.value = contTentativas + " Tentativas Restantes"
+
+            if (num < chute) {
+                out.value = "Número Incorreto - O número secreto é menor do que " + chute
+
+            }else if (num > chute) {
+                out.value = "Número Incorreto - O número secreto é maior do que " + chute
+
+            }else{
+                out.value = "Número Correto - O número secreto era " + num
+            }
+
+            if (contTentativas == 0) {
+                document.querySelector("#idChu").disabled = true
+                out.value = "Número Correto - O número secreto era " + num
+            }
+            contTentativas--
+            
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Conversor de Moedas</title>
+    </head>
+    <body>
+        <label for="idVal">Valor</label><br>
+        <input type="number" id="idVal">
+        <br><br>
+
+        <input type="radio" id="idReal" name="nmMoeda" checked>
+        <label for="idReal">Real</label><br>
+
+        <input type="radio" id="idDolarAmer" name="nmMoeda">
+        <label for="idDolarAmer">Dólar Americano</label><br>
+
+        <input type="radio" id="idEuro" name="nmMoeda">
+        <label for="idEuro">Euro</label><br>
+
+        <input type="radio" id="idLibraEster" name="nmMoeda">
+        <label for="idLibraEster">Libra Esterlina</label><br>
+
+        <input type="radio" id="idDolarCana" name="nmMoeda">
+        <label for="idDolarCana">Dólar Canadense</label><br><br>
+
+        <legend>Para: </legend><br><br>
+
+        <input type="radio" id="idReal2" name="nmMoeda2">
+        <label for="idReal2">Real</label><br>
+
+        <input type="radio" id="idDolarAmer2" name="nmMoeda2" checked>
+        <label for="idDolarAmer2">Dólar Americano </label><br>
+
+        <input type="radio" id="idEuro2" name="nmMoeda2">
+        <label for="idEuro2">Euro</label><br>
+
+        <input type="radio" id="idLibraEster2" name="nmMoeda2">
+        <label for="idLibraEster2">Libra Esterlina</label><br>
+
+        <input type="radio" id="idDolarCana2" name="nmMoeda2">
+        <label for="idDolarCana2">Dólar Canadense</label><br><br>
+
+        <button type="button" onclick="converter()">Converter</button>
+        <br><br>
+
+        <output id="idOut"></output>
+    </body>
+    <script>
+
+        var out = document.querySelector("#idOut")
+       
+        function converter() {
+            let val = Number(document.querySelector("#idVal").value)
+            let conver
+
+            let deReal = document.querySelector("#idReal").checked
+            let deDolarAmer = document.querySelector("#idDolarAmer").checked
+            let deEuro = document.querySelector("#idEuro").checked
+            let deLibra = document.querySelector("#idLibraEster").checked
+            let deDolarCana = document.querySelector("#idDolarCana").checked
+
+            let paraReal = document.querySelector("#idReal2").checked
+            let paraDolarAmer = document.querySelector("#idDolarAmer2").checked
+            let paraEuro = document.querySelector("#idEuro2").checked
+            let paraLibra = document.querySelector("#idLibraEster2").checked
+            let paraDolarCana = document.querySelector("#idDolarCana2").checked
+
+           if (deReal && paraDolarAmer) {
+               conver = val * 0.20
+            } else if(deReal && paraEuro){
+               conver = val * 0.19
+            } else if(deReal && paraLibra){
+               conver = val * 0.16
+            } else if(deReal && paraDolarCana){
+               conver = val * 0.26
+            } 
+           
+            else if(deDolarAmer && paraReal){
+               conver = val * 4.88
+            } else if(deDolarAmer && paraEuro){
+               conver = val * 0.95
+            } else if(deDolarAmer && paraLibra){
+               conver = val * 0.80
+            } else if(deDolarAmer && paraDolarCana){
+               conver = val * 1.28
+            }
+
+            else if(deEuro && paraReal){
+               conver = val * 5.15
+            } else if(deEuro && paraDolarAmer){
+               conver = val * 1.06
+            } else if(deEuro && paraLibra){
+               conver = val * 0.85
+            } else if(deEuro && paraDolarCana){
+               conver = val * 1.36
+            }
+
+            else if(deLibra && paraReal){
+               conver = val * 6.10
+            } else if(deLibra && paraDolarAmer){
+               conver = val * 1.25
+            } else if(deLibra && paraEuro){
+               conver = val * 1.18
+            } else if(deLibra && paraDolarCana){
+               conver = val * 1.60
+            }
+
+            else if(deDolarCana && paraReal){
+               conver = val * 3.80
+            } else if(deDolarCana && paraDolarAmer){
+               conver = val * 0.78
+            } else if(deDolarCana && paraEuro){
+               conver = val * 0.74
+            } else if(deDolarCana && paraLibra){
+               conver = val * 0.62
+            } else {
+                conver = val
+            }
+
+            out.value = "Valor: " + conver.toFixed(2)
+        }
+        
+    </script>
+</html>

@@ -29,20 +29,26 @@
             let final = Number(document.querySelector("#idNum2").value)
             let texto = ""
 
-            let num = final - 1
+            while (inicial < final) {               
+                let num = 2
+               
+                    while (inicial > num) {
+                        let contaErro = 0
+                        let res = inicial % num
 
-            while (inicial <= final) {
+                        console.log(inicial);
+                        console.log(num);
 
-                while (num > 0) {
-                    let res = final % num
-
-                    if (res == 0) {
-                        num--
-                    } else {
-                        texto = texto + final + " "
+                        if (res == 0) {
+                            contaErro++
+                        }
+                        if (contaErro == 0) {
+                            texto = texto + inicial + " "
+                        }
+                        num++
                     }
-                }
-                final--
+                    
+                inicial++
             }
 
             out.value = "Números primos contido no intervalo : " + texto

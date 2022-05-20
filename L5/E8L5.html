@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Conversor de Temperatura</title>
+    </head>
+    <body>
+        <label for="idNum1">Temperatura em ºC</label><br>
+        <input type="number" id="idNum1">
+        <br><br>
+
+        <button type="button" onclick="converter()">Converter</button>
+        <br><br>
+
+        <output id="idOut">Temperatura em Fahrenheit: </output>
+    </body>
+    <script>
+
+        var out = document.querySelector("#idOut")
+
+        function converter() {
+            let tempC = document.querySelector("#idNum1").value
+            let conver = (9 * tempC + 160)/5
+
+            out.value = "Temperatura em Fahrenheit: " + (conver).toFixed(2)
+        }
+        
+    </script>
+</html>

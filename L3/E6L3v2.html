@@ -32,7 +32,7 @@
             var num1 = Number(document.getElementById("idNum1").value)
             var num2 = Number(document.getElementById("idNum2").value)
             var operador = document.getElementById("idOPerador").value
-
+            /*
             if (operador == "+") {
                 document.getElementById("idOut").value ="Resultado: " + (num1 + num2)
             } else if(operador == "-"){
@@ -40,10 +40,33 @@
             } else if(operador == "*"){
                 document.getElementById("idOut").value ="Resultado: " + (num1 * num2)
             }else if(operador == "/"){
-                document.getElementById("idOut").value ="Resultado: " + (num1 / num2)
+                document.getElementById("idOut").value ="Resultado: " + (num1 / num2).toFixed(2)
             } else {
                 document.getElementById("idOut").value = "Operação Inválida"
+            }*/
+
+            switch (operador) {
+                case "+":
+                document.getElementById("idOut").value ="Resultado: " + (num1 + num2)
+                    break;
+
+                case "-":
+                document.getElementById("idOut").value ="Resultado: " + (num1 - num2)
+                    break;
+
+                case "*":
+                document.getElementById("idOut").value ="Resultado: " + (num1 * num2)
+                    break;
+
+                case "/":
+                document.getElementById("idOut").value ="Resultado: " + (num1 / num2).toFixed(2)
+                    break;
+            
+                default:
+                    alert("Operação Inválida")
+                    break;
             }
+
         }
 
     </script>

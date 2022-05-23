@@ -36,31 +36,38 @@
         var usu3 = "E21Aluno3"
         var sen3 = "123Trocar"
 
-        var corr = document.querySelector("#idOut").value
-        var usuNCad = document.querySelector("#idOut").value
-        var senInco = document.querySelector("#idOut").value
-        var bloq = document.querySelector("#idOut").value
-
         var contTent = 0
 
         function pegarDados(){
-            contTent++ 
+            
 
             let usu = document.querySelector("#idUsu").value
             let sen = document.querySelector("#idSen").value
 
             
-            if (usu !== usu1 && sen == sen1) {
+            if ((usu !== usu1 && sen == sen1) || (usu !== usu2 && sen == sen2) || (usu !== usu3 && sen == sen3)){
                 document.querySelector("#idOut").value = "Usuário não cadastrado"
+                contTent++
 
-            } else if(usu == usu1 && sen !== sen1){
+            } else if ((usu == usu1 && sen !== sen1) || (usu == usu2 && sen !== sen2) || (usu == usu3 && sen !== sen3)){           
                 document.querySelector("#idOut").value = "Senha incorreta"
-
-            } else if(usu == usu1 && sen == sen1){
+                contTent++
+            
+            } else if ((usu == usu1 && sen == sen1) || (usu == usu2 && sen == sen2) || (usu == usu3 && sen == sen3)){
                 document.querySelector("#idOut").value = "Acesso Permitido"
-
+            
+            } else if (contTent > 2) {
+                alert("Usuário bloqueado")
+                document.querySelector("#idUsu").disabled = true
+                document.querySelector("#idSen").disabled = true
+            
+            } else {
+                document.querySelector("#idOut").value = "Credenciais Incorretas!"
+            }
+            console.log(contTent);
+            
             //Usuário 2 
-
+            /*
             } else if (usu !== usu2 && sen == sen2) {
                 document.querySelector("#idOut").value = "Usuário não cadastrado"
 
@@ -80,15 +87,8 @@
 
             } else if(usu == usu3 && sen == sen3){
                 document.querySelector("#idOut").value = "Acesso Permitido"
-
-            } else if (contTent > 2) {
-                alert("Usuário bloqueado")
-                document.querySelector("#idUsu").disabled = true
-                document.querySelector("#idSen").disabled = true
+            */
             
-            } else {
-                document.querySelector("#idOut").value = "Credenciais Incorretas"
-            }
         }
     </script>
 </body>

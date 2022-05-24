@@ -20,17 +20,6 @@
         <input type="radio" id="idKelvin" name="nmTemp">
         <label for="idKelvin">Kelvin</label><br><br>
 
-        <legend>Para: </legend><br><br>
-
-        <input type="radio" id="idCelsius2" name="nmTemp2">
-        <label for="idCelsius2">Celsius</label><br>
-
-        <input type="radio" id="idFahrenheit2" name="nmTemp2" checked>
-        <label for="idFahrenheit2 ">Fahrenheit </label><br>
-
-        <input type="radio" id="idKelvin2" name="nmTemp2">
-        <label for="idKelvin2">Kelvin</label><br><br>
-
         <button type="button" onclick="converter()">Converter</button>
         <br><br>
 
@@ -42,31 +31,30 @@
        
         function converter() {
             let temp = Number(document.querySelector("#idTemp").value)
-            let conver
-            let deC1 = document.querySelector("#idCelsius").checked
-            let deF1 = document.querySelector("#idFahrenheit").checked
-            let deK1 = document.querySelector("#idKelvin").checked
-            let paraC2 = document.querySelector("#idCelsius2").checked
-            let paraF2 = document.querySelector("#idFahrenheit2").checked
-            let paraK2 = document.querySelector("#idKelvin2").checked
+            let Celsius = document.querySelector("#idCelsius").checked
+            let Fahrenheit = document.querySelector("#idFahrenheit").checked
+            let Kelvin = document.querySelector("#idKelvin").checked
 
-            if (deC1 && paraF2) {
-                conver = (9 * temp + 160)/5
-            } else if(deC1 && paraK2){
-                conver = (temp + 273)
-            } else if(deF1 && paraC2){
-                conver = (5 * temp - 160)/9
-            } else if(deF1 && paraK2){
-                conver = (temp - 32) * 5/9 + 273.15
-            } else if(deK1 && paraC2){
-                conver = (temp - 273)
-            } else if(deK1 && paraF2){
-                conver = (temp - 273.15) * 9/5 + 32
-            } else {
-                conver = temp
+            if (Celsius) {
+                let converFah = (9 * temp + 160)/5
+                let converKel = (temp + 273.15)
+
+                out.value = "Temperaturas - Kelvin: " + converKel.toFixed(2) + " - Fahrenheit: " + converFah.toFixed(2)
             }
+            
+            if(Fahrenheit){
+                let converCel = (5 * temp - 160)/9
+                converKel = (temp - 32) * 5/9 + 273.15
 
-            out.value = "Temperatura: " + conver.toFixed(2)
+                out.value = "Temperaturas - Kelvin: " + converKel.toFixed(2) + " - Celsius: " + converCel.toFixed(2)
+            }
+            
+            if(Kelvin){
+                converCel = (temp - 273.15)
+                converFah = (temp - 273.15) * 9/5 + 32
+
+                out.value = "Temperaturas - Fahrenheit: " + converFah.toFixed(2) + " - Celsius: " + converCel.toFixed(2)
+            }            
         }
         
     </script>

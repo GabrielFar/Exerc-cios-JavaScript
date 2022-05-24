@@ -13,7 +13,7 @@
         <input type="number" id="idChu" name="nmChu" min="1" max="10">
         <br><br>
 
-        <button type="button" onclick="chutar()">Chutar</button>
+        <button type="button" onclick="chutar()" id="idBot">Chutar</button>
         <br><br>
 
         <output id="idOutAviso"></output><br><br>
@@ -44,6 +44,7 @@
 
             if (contTentativas == 0) {
                 document.querySelector("#idChu").disabled = true
+                document.querySelector("#idBot").disabled = true
                 out.value = "Número Correto - O número secreto era " + num
             }
             contTentativas--

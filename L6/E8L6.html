@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="">
+            <label for="idNums">Insira os Números</label><br>
+            <input type="text" id="idNums" name="nmNums">
+            <br><br>
+
+            <button type="button" onclick="lerNomes()" id="idLer">Ler Números</button>
+            <br><br>
+
+            <button type="button" onclick="mostrar()">Mostrar Seqência</button>
+            <br><br>
+
+            <output id="idOut"></output>
+            <br><br>
+
+            <output id="idOut2"></output>
+        </form>
+        <script>
+            var out = document.querySelector("#idOut")
+            var out2 = document.querySelector("#idOut2")
+            var numeros = []
+            var contaNums = 0
+
+            function lerNomes() { 
+                contaNums++
+                               
+                if (contaNums <= 15) {
+                    let input = Number(document.querySelector("#idNums").value)
+                    numeros.push(input)
+                    document.querySelector("#idNums").value = ""
+                    //console.log(numeros);
+                    //console.log(contaNums); 
+
+                } else {
+                    document.querySelector("#idLer").disabled = true
+                }                
+            }
+            function mostrar() {          
+                out.value = numeros
+                let texto = ""
+
+                for (let index = 0; index < numeros.length; index++){
+                    let numIndice = numeros[index]                   
+
+                    //console.log("numIndice " + numIndice);
+                    //console.log(numeros[index]);
+
+                    let resto = numIndice % 10
+                    
+                    if (resto == 0) {                                            
+                        texto = texto + String(index) + " "                        
+                    }
+                }
+                out2.value = "Posição no Índice: " + texto                   
+            }
+        
+        </script>
+    </body>
+</html>

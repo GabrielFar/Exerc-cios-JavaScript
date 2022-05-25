@@ -32,15 +32,14 @@
 
                     let num = gerarRandom
                     numeros[i] = num 
-                    console.log(numeros);           
                 }
+                
                 for (let index = 0; index < numeros.length; index++) {
 
                    if (chave == numeros[index]) {
                        texto = texto + index + " "
                        contaAchado++
-                   }
-                    
+                   }                    
                 }
                 out.value = "Foram encontrados " + contaAchado + " " + chave + " nas posições no índice: " + texto
             }

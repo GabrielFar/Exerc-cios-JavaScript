@@ -32,7 +32,7 @@
             function lerNomes() { 
                 contaNums++
                                
-                if (contaNums <= 15) {
+                if (contaNums <= 10) {
                     let input = Number(document.querySelector("#idNums").value)
                     numeros.push(input)
                     document.querySelector("#idNums").value = ""
@@ -44,22 +44,22 @@
                 }                
             }
             function mostrar() {          
-                out.value = numeros
+                
                 let texto = ""
+                let texto2 = ""
 
                 for (let index = 0; index < numeros.length; index++){
                     let numIndice = numeros[index]                   
+                    pares = numIndice % 2
 
-                    //console.log("numIndice " + numIndice);
-                    //console.log(numeros[index]);
-
-                    let resto = numIndice % 10
-                    
-                    if (resto == 0) {                                            
-                        texto = texto + index + " "                        
-                    }
+                    if (pares == 0) {
+                        texto = texto + numIndice + " "  
+                        texto2 = texto2 + index + " "
+                                              
+                    }                    
                 }
-                out2.value = "Posição no Índice: " + texto                   
+                out.value = "Números Pares: " + texto
+                out2.value = "Posição no Índice: " + texto2                   
             }
         
         </script>

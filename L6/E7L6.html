@@ -12,7 +12,10 @@
             <input type="text" id="idNomes" name="nmNomes">
             <br><br>
 
-            <button type="button" onclick="lerNomes()">Ler Nomes</button>
+            <button type="button" onclick="lerNomes()" id="idLer">Ler Nomes</button>
+            <br><br>
+
+            <button type="button" onclick="mostrar()">Mostrar Seqência</button>
             <br><br>
 
             <output id="idOut"></output>
@@ -21,15 +24,22 @@
             var out = document.querySelector("#idOut")
             var nomes = []
             var contaNomes = 0
-            function lerNomes() {                    
-                let input = document.querySelector("#idNomes").value
-                nomes.unshift(input)
-                document.querySelector("#idNomes").value = ""
-                contaNomes++
 
-                for (let index = 0; index < contaNomes; index++) {
-                    console.log(nomes[index]);
-                }
+            function lerNomes() { 
+                contaNomes++
+                               
+                if (contaNomes <= 7) {
+                    let input = document.querySelector("#idNomes").value
+                    nomes.unshift(input)
+                    document.querySelector("#idNomes").value = ""
+                    console.log(nomes);
+                    console.log(contaNomes);                     
+                } else {
+                    document.querySelector("#idLer").disabled = true
+                }                
+            }
+            function mostrar() {          
+               out.value = nomes
             }
         
         </script>

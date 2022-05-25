@@ -9,23 +9,18 @@
     <body>
         <script>
             var numeros = []
-            var num = 5
+            
             for (let i = 0; i < 10; i++) {
-                numeros[i] = num 
+                let resto = i % 2                 
 
-                if (num == 5) {
-                    num = 3
+                if (resto == 0) {
+                    numeros.push(5)
                 } else {
-                    num = 5
-                }           
-
+                    numeros.push(3)
+                }                        
             }
-            for (let index = 0; index < numeros.length; index++) {
-       
-                console.log(numeros[index]);
-            }
-
-        
+            console.log(numeros);
+           
         </script>
     </body>
 </html>

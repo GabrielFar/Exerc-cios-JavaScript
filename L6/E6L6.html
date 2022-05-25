@@ -14,6 +14,7 @@
             <output id="idOut"></output>
         </form>
         <script>
+            var out = document.querySelector("#idOut")
             function gerar() {                    
                 
                 var numeros = []
@@ -27,11 +28,12 @@
 
                 }
                 for (let index = 0; index < numeros.length; index++) {
-        
+                    
                     console.log(numeros[index]);
+                    out.value = (numeros);
                 }
+                
             }
-
         
         </script>
     </body>

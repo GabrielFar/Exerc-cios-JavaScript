@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="">
+            <button type="button" onclick="gerar()">Gerar Números Aleatórios</button>
+            <br><br>
+
+            <output id="idOut"></output>
+        </form>
+        <script>
+            function gerar() {                    
+                
+                var numeros = []
+                
+                for (let i = 0; i < 7; i++) {
+                    
+                    let gerarRandom = (parseInt(Math.random() * 10) + 1)
+
+                    let num = gerarRandom
+                    numeros[i] = num            
+
+                }
+                for (let index = 0; index < numeros.length; index++) {
+        
+                    console.log(numeros[index]);
+                }
+            }
+
+        
+        </script>
+    </body>
+</html>

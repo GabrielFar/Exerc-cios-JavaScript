@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="">
+            <label for="idNota">Insira as Notas</label><br>
+            <input type="number" id="idNota">
+            <br><br>
+            
+            <button type="button" onclick="guardar()" id="idGuardar">Guardar Nota </button>
+            <br><br>
+            <button type="button" onclick="mostrarReasultado()">Mostrar Resultados</button>
+            <br><br>
+
+            <output id="idOutMedia"></output><br><br>
+            <output id="idOutAcimaDaMedia"></output><br><br>
+            <output id="idOutMaiorNota"></output><br><br>
+
+        </form>
+        <script>
+            let notas = []
+            let outMedia = document.querySelector("#idOutMedia")
+            let outAcimaDaMedia = document.querySelector("#idOutAcimaDaMedia")
+            let outMaiorNota = document.querySelector("#idOutMaiorNota") 
+            let soma = 0       
+        
+            function guardar() {
+                let nota = Number(document.querySelector("#idNota").value)
+                soma = soma + Number(document.querySelector("#idNota").value)
+                notas.push(nota)
+                document.querySelector("#idNota").value  = ""
+            }
+
+            function mostrarReasultado() {
+                let media = soma / notas.length
+                outMedia.value = "Média: " + media
+            }
+        </script>
+    </body>
+</html>

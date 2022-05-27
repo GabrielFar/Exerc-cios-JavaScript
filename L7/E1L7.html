@@ -37,8 +37,24 @@
             }
 
             function mostrarReasultado() {
-                let media = soma / notas.length
+                let media = soma / notas.length                
+                let contaAcimaMedia = 0
+                let maiorNota = 0
                 outMedia.value = "Média: " + media
+
+                for (let i = 0; i < notas.length; i++) {
+                    if (notas[i] > media) {
+                       contaAcimaMedia++
+                    }
+                    outAcimaDaMedia.value = "Há " + contaAcimaMedia + " alunos acima da média"   
+              
+                    if (maiorNota < notas[i]) {
+                        maiorNota = notas[i]
+                        let posicaoMaiorNota = i
+                        outMaiorNota.value = "Maior Nota: " + maiorNota + " - Na posição: " + posicaoMaiorNota
+                    }
+                }    
+                console.log(notas);            
             }
         </script>
     </body>

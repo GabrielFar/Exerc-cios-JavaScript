@@ -37,12 +37,12 @@
             var generos = []
             var salarios = []
             var out = document.querySelector("#idOut")
-            var masc = document.querySelector("#idMasc").checked
-            var fem = document.querySelector("#idFem").checked
             
             function guardar() {
                 let nome = document.querySelector("#idNome").value
                 let salario = Number(document.querySelector("#idSalario").value)
+                let masc = document.querySelector("#idMasc").checked
+                let fem = document.querySelector("#idFem").checked
 
                 salarios.push(salario)
                 nomes.push(nome)
@@ -58,6 +58,7 @@
             }
 
             function mostrarReasultado() {
+                
                 let texto = "|| "
                 for (let i= 0; i < nomes.length; i++) {
                     if ((generos[i] == "fem") && (salarios[i] > 5000) ) {

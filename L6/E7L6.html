@@ -30,16 +30,20 @@
                                
                 if (contaNomes <= 7) {
                     let input = document.querySelector("#idNomes").value
-                    nomes.unshift(input)
+                    nomes.push(input)
                     document.querySelector("#idNomes").value = ""
                     console.log(nomes);
-                    console.log(contaNomes);                     
+                                      
                 } else {
                     document.querySelector("#idLer").disabled = true
                 }                
             }
-            function mostrar() {          
-               out.value = nomes
+            function mostrar() {   
+                let nomesInvertidos = [] 
+                for (let i = 0; i < nomes.length; i++) {
+                    nomesInvertidos.unshift(nomes[i])                    
+                }      
+               out.value = nomesInvertidos
             }
         
         </script>

@@ -44,21 +44,21 @@
             function ordenar() {
                 let crescente = document.querySelector("#idCre").checked
                 let decrescente = document.querySelector("#idDecre").checked
-                let palceHolder = 0
+                let placeHolder = 0
 
                 for (let i = 1; i < nums.length; i++) { // num analisado
                     for (let index = 0; index < nums.length; index++) { // num comparado
                         
                         if (nums[i] < nums[index] && crescente == true) {
-                            palceHolder = nums[i]
+                            placeHolder = nums[i]
                             nums.splice(i, 1)
-                            nums.splice(index, 0, palceHolder)
+                            nums.splice(index, 0, placeHolder)
                             index = nums.length
                         }
                         if (nums[i] > nums[index] && decrescente == true) {
-                            palceHolder = nums[i]
+                            placeHolder = nums[i]
                             nums.splice(i, 1)
-                            nums.splice(index, 0, palceHolder)
+                            nums.splice(index, 0, placeHolder)
                             index = nums.length
                         }
                     }  

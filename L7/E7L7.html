@@ -26,6 +26,9 @@
             <button type="button" onclick="finalizarJogo()">Finalizar Jogo</button>
             <br><br>
 
+            <output id="idOutResultado"></output>
+            <br><br>
+
             <output id="idOutFim"></output>
         </form>
         <script>
@@ -41,6 +44,7 @@
 
             var out = document.querySelector("#idOut")
             var outFim = document.querySelector("#idOutFim")
+            var outResul = document.querySelector("#idOutResultado")
             var contRodadas = 0
             var sorteio
             var vezJog
@@ -73,18 +77,19 @@
                 //console.log("Estado: " + estado);
             }
             var pontoJog1 = 0
-            var pontoJog2 = 0
-            var pontoJog3 = 0
-            var pontoJog4 = 0
+            var pontoJog2 = 1
+            var pontoJog3 = 3
+            var pontoJog4 = 2
 
             var pontuações = []
+            var jogadores = ["Jogador 1", "Jogador 2", "Jogador 3", "Jogador 4"]
             
             function responder() {                
                 let capital = capitais[sorteio]
                 let chute = document.querySelector("#idChute").value
 
-                console.log("Capital: " + capital);
-                console.log("Chute: " + chute);
+                //console.log("Capital: " + capital);
+                //console.log("Chute: " + chute);
 
                 if (chute == capital) {
                     if (vezJog == 0) {
@@ -119,6 +124,10 @@
             }
 
             function finalizarJogo() {
+                let placeHolder
+                let placeHolderNomes
+                let texto = ""
+
                 for (let i = 0; i < pontuações.length; i++) { // num analisado
                     for (let index = 0; index < pontuações.length; index++) { // num comparado
                     
@@ -126,12 +135,24 @@
                             placeHolder = pontuações[i]
                             pontuações.splice(i, 1)
                             pontuações.splice(index, 0, placeHolder)
+
+                            placeHolderNomes = jogadores[i]
+                            jogadores.splice(i, 1)
+                            jogadores.splice(index, 0, placeHolderNomes)
                             index = pontuações.length
                         }
                     }                           
                 }
-
-                outFim.value = pontuações 
+                if (0 !== 0) {
+                    
+                } else{
+                    outResul.value = "Vencedor foi " + jogadores[0]
+                }                
+                
+                for (let n = 0; n < jogadores.length; n++) {
+                    texto = texto + jogadores[n] + ": " + pontuações[n] + " || "
+                }
+                outFim.value = texto
             }        
         </script>
     </body>

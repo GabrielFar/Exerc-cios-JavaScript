@@ -9,28 +9,18 @@
     <body>
         <form action="">
             <button type="button" onclick="sortear()">Sortear</button>
+            
+            <output id="idTitulo">Vez do Jogador 1</output>
             <br><br>
 
-            <label for="idJog1">Jogador 1</label><br>
-            <input type="text" id="idJog1" class="clChute">
-            <br><br>
-
-            <label for="idJog2">Jogador 2</label><br>
-            <input type="text" id="idJog2" class="clChute">
-            <br><br>
-
-            <label for="idJog3">Jogador 3</label><br>
-            <input type="text" id="idJog3" class="clChute">
-            <br><br>
-
-            <label for="idJog4">Jogador 4</label><br>
-            <input type="text" id="idJog4" class="clChute">
+            <label for="idChute">Chute</label><br>
+            <input type="text" id="idChute">
             <br><br>
 
             <output id="idOut"></output>
             <br><br>
 
-            <button type="button" onclick="responder()">Responder</button>
+            <button type="button" onclick="responder()" id="idBotaoResponder">Responder</button>
             <br><br>
 
             <button type="button" onclick="finalizarJogo()">Finalizar Jogo</button>
@@ -54,56 +44,48 @@
             var contRodadas = 0
             var sorteio
             var vezJog
+            var botaoResponder = document.querySelector("#idBotaoResponder").disabled
+            document.querySelector("#idBotaoResponder").disabled = true
 
             function sortear() {
+                let titulo = document.querySelector("#idTitulo")
                 sorteio = parseInt(Math.random() * 27)
                 let estado = estados[sorteio]
-
+                
                 out.value = "Qual é a capital de " + estado + " ?"
 
                 vezJog = contRodadas % 4
 
                 if (vezJog == 0) {
-                    document.querySelector("#idJog1").disabled = false
-                    document.querySelector("#idJog2").disabled = true
-                    document.querySelector("#idJog3").disabled = true
-                    document.querySelector("#idJog4").disabled = true
-
+                    titulo.value = "Vez do Jogador 1"
                 } else if (vezJog == 1) {
-                    document.querySelector("#idJog1").disabled = true
-                    document.querySelector("#idJog2").disabled = false
-                    document.querySelector("#idJog3").disabled = true
-                    document.querySelector("#idJog4").disabled = true
-
+                    titulo.value = "Vez do Jogador 2"
                 } else if (vezJog == 2) {
-                    document.querySelector("#idJog1").disabled = true
-                    document.querySelector("#idJog2").disabled = true
-                    document.querySelector("#idJog3").disabled = false
-                    document.querySelector("#idJog4").disabled = true
-                    
+                    titulo.value = "Vez do Jogador 3"
                 } else if (vezJog == 3) {
-                    document.querySelector("#idJog1").disabled = true
-                    document.querySelector("#idJog2").disabled = true
-                    document.querySelector("#idJog3").disabled = true
-                    document.querySelector("#idJog4").disabled = false
-
+                    titulo.value = "Vez do Jogador 4"
                 }
+
                 contRodadas++
-                //.log("Vez do Jogador: " + (vezJog + 1));
+
+                document.querySelector("#idBotaoResponder").disabled = false
+                //console.log("Vez do Jogador: " + (vezJog + 1));
                 //console.log("Estado: " + estado);
             }
+            var pontoJog1 = 0
+            var pontoJog2 = 0
+            var pontoJog3 = 0
+            var pontoJog4 = 0
+
+            var pontuações = []
             
-            function responder() {
-                let chute = document.querySelectorAll(".clChute").value
-                let pontoJog1 = 1
-                let pontoJog2 = 2
-                let pontoJog3 = 0
-                let pontoJog4 = 3
+            function responder() {                
                 let capital = capitais[sorteio]
-               //console.log("Capital: " + capital);
-               //console.log("Chute: " + chute);
-                pontuações = [pontoJog1, pontoJog2, pontoJog3, pontoJog4]
-                
+                let chute = document.querySelector("#idChute").value
+
+                console.log("Capital: " + capital);
+                console.log("Chute: " + chute);
+
                 if (chute == capital) {
                     if (vezJog == 0) {
                         pontoJog1++
@@ -124,31 +106,32 @@
                 }else{
                     alert("Resposta Incorreta!")
                 }
-                document.querySelector("#idJog1").value = ""
-                document.querySelector("#idJog2").value = ""
-                document.querySelector("#idJog3").value = ""
-                document.querySelector("#idJog4").value = ""
+               
+                document.querySelector("#idChute").value = ""
                 sortear()
 
-                //console.log("Pontos: " + pontoJog1);
-                //console.log("Pontos: " + pontoJog2);
-                //console.log("Pontos: " + pontoJog3);
-                //console.log("Pontos: " + pontoJog4);
+                pontuações = [pontoJog1, pontoJog2, pontoJog3, pontoJog4]
+
+                console.log("Pontos: " + pontoJog1);
+                console.log("Pontos: " + pontoJog2);
+                console.log("Pontos: " + pontoJog3);
+                console.log("Pontos: " + pontoJog4);
             }
 
             function finalizarJogo() {
-                let placeHolder = 0
                 for (let i = 0; i < pontuações.length; i++) { // num analisado
                     for (let index = 0; index < pontuações.length; index++) { // num comparado
                     
-                        placeHolder = pontuações[i]
-                        pontuações.splice(i, 1)
-                        pontuações.splice(index, 0, placeHolder)
-                        index = pontuações.length
-                    }
+                        if (pontuações[i] > pontuações[index]) {
+                            placeHolder = pontuações[i]
+                            pontuações.splice(i, 1)
+                            pontuações.splice(index, 0, placeHolder)
+                            index = pontuações.length
+                        }
+                    }                           
                 }
-                console.log(pontuações);
-                outFim.value = pontuações  
+
+                outFim.value = pontuações 
             }        
         </script>
     </body>

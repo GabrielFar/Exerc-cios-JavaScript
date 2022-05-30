@@ -8,7 +8,7 @@
     </head>
     <body>
         <form action="">
-            <button type="button" onclick="sortear()" id="idBotaoSortear">Sortear</button>
+            <button type="button" onclick="sortear()" id="idBotaoSortear">Começar!</button>
             <br><br>
             
             <output id="idTitulo">Vez do Jogador 1</output>
@@ -53,13 +53,17 @@
             document.querySelector("#idBotaoResponder").disabled = true
 
             function sortear() {
-                let titulo = document.querySelector("#idTitulo")
-                sorteio = parseInt(Math.random() * 27)
-                let estado = estados[sorteio]
                 
+                document.querySelector("#idBotaoSortear").hidden = true
+
+                sorteio = parseInt(Math.random() * 27)
+                let estado = estados[sorteio]                
+
                 out.value = "Qual é a capital de " + estado + " ?"
 
                 vezJog = contRodadas % 4
+
+                let titulo = document.querySelector("#idTitulo")
 
                 if (vezJog == 0) {
                     titulo.value = "Vez do Jogador 1"
@@ -77,10 +81,10 @@
                 //console.log("Vez do Jogador: " + (vezJog + 1));
                 //console.log("Estado: " + estado);
             }
-            var pontoJog1 = 2
+            var pontoJog1 = 3
             var pontoJog2 = 1
             var pontoJog3 = 3
-            var pontoJog4 = 1
+            var pontoJog4 = 0
 
             var pontuações = []
             var jogadores = ["Jogador 1", "Jogador 2", "Jogador 3", "Jogador 4"]
@@ -88,8 +92,7 @@
             function responder() {                
                 let capital = capitais[sorteio]
                 let chute = document.querySelector("#idChute").value
-                document.querySelector("#idBotaoSortear").hidden = true
-
+                
                 //console.log("Capital: " + capital);
                 //console.log("Chute: " + chute);
 

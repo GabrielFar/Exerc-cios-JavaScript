@@ -8,7 +8,8 @@
     </head>
     <body>
         <form action="">
-            <button type="button" onclick="sortear()">Sortear</button>
+            <button type="button" onclick="sortear()" id="idBotaoSortear">Sortear</button>
+            <br><br>
             
             <output id="idTitulo">Vez do Jogador 1</output>
             <br><br>
@@ -23,7 +24,7 @@
             <button type="button" onclick="responder()" id="idBotaoResponder">Responder</button>
             <br><br>
 
-            <button type="button" onclick="finalizarJogo()">Finalizar Jogo</button>
+            <button type="button" onclick="finalizarJogo()" id="idBotaoFinalizar">Finalizar Jogo</button>
             <br><br>
 
             <output id="idOutResultado"></output>
@@ -48,7 +49,7 @@
             var contRodadas = 0
             var sorteio
             var vezJog
-            var botaoResponder = document.querySelector("#idBotaoResponder").disabled
+            
             document.querySelector("#idBotaoResponder").disabled = true
 
             function sortear() {
@@ -76,10 +77,10 @@
                 //console.log("Vez do Jogador: " + (vezJog + 1));
                 //console.log("Estado: " + estado);
             }
-            var pontoJog1 = 0
+            var pontoJog1 = 2
             var pontoJog2 = 1
             var pontoJog3 = 3
-            var pontoJog4 = 2
+            var pontoJog4 = 1
 
             var pontuações = []
             var jogadores = ["Jogador 1", "Jogador 2", "Jogador 3", "Jogador 4"]
@@ -87,6 +88,7 @@
             function responder() {                
                 let capital = capitais[sorteio]
                 let chute = document.querySelector("#idChute").value
+                document.querySelector("#idBotaoSortear").hidden = true
 
                 //console.log("Capital: " + capital);
                 //console.log("Chute: " + chute);
@@ -113,20 +115,29 @@
                 }
                
                 document.querySelector("#idChute").value = ""
+
                 sortear()
 
                 pontuações = [pontoJog1, pontoJog2, pontoJog3, pontoJog4]
 
-                console.log("Pontos: " + pontoJog1);
-                console.log("Pontos: " + pontoJog2);
-                console.log("Pontos: " + pontoJog3);
-                console.log("Pontos: " + pontoJog4);
+                //console.log("");
+                //console.log(pontuações);
+                //console.log("");
+                //console.log("Pontos: " + pontoJog1);
+                //console.log("Pontos: " + pontoJog2);
+                //console.log("Pontos: " + pontoJog3);
+                //console.log("Pontos: " + pontoJog4);
             }
 
             function finalizarJogo() {
+                document.querySelector("#idBotaoResponder").disabled = true
+
                 let placeHolder
                 let placeHolderNomes
                 let texto = ""
+                let contaEmpate = 0
+                let primeiroEmpate
+                let segundoEmpate
 
                 for (let i = 0; i < pontuações.length; i++) { // num analisado
                     for (let index = 0; index < pontuações.length; index++) { // num comparado
@@ -141,18 +152,31 @@
                             jogadores.splice(index, 0, placeHolderNomes)
                             index = pontuações.length
                         }
+                        if (pontuações[i] == pontuações[index] && i !== index) {
+                            contaEmpate++
+                            primeiroEmpate = jogadores[i]
+                            segundoEmpate = jogadores[index]
+                        }
                     }                           
                 }
-                if (0 !== 0) {
-                    
+
+                //Vencedor                
+                if (contaEmpate !==0) {
+                    outResul.value = "Empate entre " + primeiroEmpate + " e " + segundoEmpate
                 } else{
                     outResul.value = "Vencedor foi " + jogadores[0]
                 }                
-                
-                for (let n = 0; n < jogadores.length; n++) {
-                    texto = texto + jogadores[n] + ": " + pontuações[n] + " || "
+
+                //Pontuações Geral
+                for (let pontuaçãoFinal = 0; pontuaçãoFinal < jogadores.length; pontuaçãoFinal++) {
+                    texto = texto + " || " + jogadores[pontuaçãoFinal] + ": " + pontuações[pontuaçãoFinal]
                 }
                 outFim.value = texto
+
+                document.querySelector("#idBotaoFinalizar").disabled = true
+
+                //console.log("");
+                //console.log(pontuações);
             }        
         </script>
     </body>

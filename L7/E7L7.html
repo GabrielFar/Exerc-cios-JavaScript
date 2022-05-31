@@ -81,10 +81,10 @@
                 //console.log("Vez do Jogador: " + (vezJog + 1));
                 //console.log("Estado: " + estado);
             }
-            var pontoJog1 = 3
-            var pontoJog2 = 3
+            var pontoJog1 = 0
+            var pontoJog2 = 0
             var pontoJog3 = 0
-            var pontoJog4 = 3
+            var pontoJog4 = 0
 
             var pontuações = []
             var jogadores = ["Jogador 1", "Jogador 2", "Jogador 3", "Jogador 4"]
@@ -156,22 +156,23 @@
                         }
                     }                           
                 }
+
                 //indentificar se houve empate
                 if (pontuações[0] == pontuações[1]) {
                     textoEmpate = jogadores[0] + " e " + jogadores[1]
                     contaEmpate++
                 }             
-                console.log(textoEmpate);
+
                 if (pontuações[0] == pontuações[1] && pontuações[1] == pontuações[2]) {
                     textoEmpate = jogadores[0] + " e " + jogadores[1]  + " e " + jogadores[2]
                     contaEmpate++
                 }             
-                console.log(textoEmpate);
+                
                 if (pontuações[0] == pontuações[1] && pontuações[1] == pontuações[2] && pontuações[2] == pontuações[3]) {
                     textoEmpate = jogadores[0] + " e " + jogadores[1] + " e " + jogadores[2]  + " e " + jogadores[3]
                     contaEmpate++
                 }             
-                console.log(textoEmpate);
+
                 //Output de calssificação                
                 if (contaEmpate !== 0) {
                     outResul.value = "Empate entre " + textoEmpate

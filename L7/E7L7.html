@@ -82,13 +82,15 @@
                 //console.log("Estado: " + estado);
             }
             var pontoJog1 = 3
-            var pontoJog2 = 1
-            var pontoJog3 = 3
-            var pontoJog4 = 0
+            var pontoJog2 = 3
+            var pontoJog3 = 0
+            var pontoJog4 = 3
 
             var pontuações = []
             var jogadores = ["Jogador 1", "Jogador 2", "Jogador 3", "Jogador 4"]
-            
+        
+            pontuações = [pontoJog1, pontoJog2, pontoJog3, pontoJog4]
+
             function responder() {                
                 let capital = capitais[sorteio]
                 let chute = document.querySelector("#idChute").value
@@ -121,8 +123,6 @@
 
                 sortear()
 
-                pontuações = [pontoJog1, pontoJog2, pontoJog3, pontoJog4]
-
                 //console.log("");
                 //console.log(pontuações);
                 //console.log("");
@@ -133,15 +133,14 @@
             }
 
             function finalizarJogo() {
-                document.querySelector("#idBotaoResponder").disabled = true
-
+ 
                 let placeHolder
                 let placeHolderNomes
                 let texto = ""
+                let textoEmpate = ""
                 let contaEmpate = 0
-                let primeiroEmpate
-                let segundoEmpate
 
+                //pontuação por ordem decrescente
                 for (let i = 0; i < pontuações.length; i++) { // num analisado
                     for (let index = 0; index < pontuações.length; index++) { // num comparado
                     
@@ -155,17 +154,27 @@
                             jogadores.splice(index, 0, placeHolderNomes)
                             index = pontuações.length
                         }
-                        if (pontuações[i] == pontuações[index] && i !== index) {
-                            contaEmpate++
-                            primeiroEmpate = jogadores[i]
-                            segundoEmpate = jogadores[index]
-                        }
                     }                           
                 }
-
-                //Vencedor                
-                if (contaEmpate !==0) {
-                    outResul.value = "Empate entre " + primeiroEmpate + " e " + segundoEmpate
+                //indentificar se houve empate
+                if (pontuações[0] == pontuações[1]) {
+                    textoEmpate = jogadores[0] + " e " + jogadores[1]
+                    contaEmpate++
+                }             
+                console.log(textoEmpate);
+                if (pontuações[0] == pontuações[1] && pontuações[1] == pontuações[2]) {
+                    textoEmpate = jogadores[0] + " e " + jogadores[1]  + " e " + jogadores[2]
+                    contaEmpate++
+                }             
+                console.log(textoEmpate);
+                if (pontuações[0] == pontuações[1] && pontuações[1] == pontuações[2] && pontuações[2] == pontuações[3]) {
+                    textoEmpate = jogadores[0] + " e " + jogadores[1] + " e " + jogadores[2]  + " e " + jogadores[3]
+                    contaEmpate++
+                }             
+                console.log(textoEmpate);
+                //Output de calssificação                
+                if (contaEmpate !== 0) {
+                    outResul.value = "Empate entre " + textoEmpate
                 } else{
                     outResul.value = "Vencedor foi " + jogadores[0]
                 }                
@@ -175,8 +184,6 @@
                     texto = texto + " || " + jogadores[pontuaçãoFinal] + ": " + pontuações[pontuaçãoFinal]
                 }
                 outFim.value = texto
-
-                document.querySelector("#idBotaoFinalizar").disabled = true
 
                 //console.log("");
                 //console.log(pontuações);

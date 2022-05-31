@@ -9,73 +9,61 @@
     <style>
        
         div {
-            border: 1px solid black;
-           
-        }
-        #idTopRow{
             display: inline;
+            padding: 2px;
         }
+        #idNum {
+            margin: 0px;
+            border: 1px solid black;
+        }
+        #idBotao{
+            text-align: center;
+        }
+        section{
+            padding: 1px;
+            margin: 2px;
+        }
+        
     </style>
     <body>
-        <div id="idNumeros">
-            <div id="idTopRow">
-                <div>
-                    <button type="button" onclick="addNumero()" id="id7">7</button>
+        <section>
+            <div>
+                <div id="idNum">
+                    <button type="button" onclick="addNumero()" id="idBotao">7</button>
                 </div>
-                <div>
-                    <button type="button" onclick="addNumero()" id="id8">8</button>
+                <div id="idNum">
+                    <button type="button" onclick="addNumero()" id="idBotao">8</button>
                 </div>
-                <div>
-                    <button type="button" onclick="addNumero()" id="id9">9</button>
+                <div id="idNum">
+                    <button type="button" onclick="addNumero()" id="idBotao">9</button>
                 </div>
             </div>
-            <!--
+        </section>
+        <section>
             <div>
-                <button type="button" onclick="addNumero()" id="id4">4</button>
+                <div id="idNum">
+                    <button type="button" onclick="addNumero()" id="idBotao">4</button>
+                </div>
+                <div id="idNum">
+                    <button type="button" onclick="addNumero()" id="idBotao">5</button>
+                </div>
+                <div id="idNum">
+                    <button type="button" onclick="addNumero()" id="idBotao">6</button>
+                </div>
             </div>
+        </section>
+        <section>
             <div>
-                <button type="button" onclick="addNumero()" id="id5">5</button>
+                <div id="idNum">
+                    <button type="button" onclick="addNumero()" id="idBotao">1</button>
+                </div>
+                <div id="idNum">
+                    <button type="button" onclick="addNumero()" id="idBotao">2</button>
+                </div>
+                <div id="idNum">
+                    <button type="button" onclick="addNumero()" id="idBotao">3</button>
+                </div>
             </div>
-            <div>
-                <button type="button" onclick="addNumero()" id="id6">6</button>
-            </div>
-            <div>
-                <button type="button" onclick="addNumero()" id="id1">1</button>
-            </div>
-            <div>
-                <button type="button" onclick="addNumero()" id="id2">2</button>
-            </div>
-            <div>
-                <button type="button" onclick="addNumero()" id="id3">3</button>
-            </div>
-            <div>
-                <button type="button" onclick="addNumero()" id="id0">0</button>
-            </div> 
-                       
-        </div>
-        <div id="idOperações">
-            <div>
-                <button type="button" onclick="addOperacao()" id="idMais">+</button>
-            </div>
-            <div>
-                <button type="button" onclick="addOperacao()" id="idMenos">-</button>
-            </div>
-            <div>
-                <button type="button" onclick="addOperacao()" id="idVezes">*</button>
-            </div>
-            <div>
-                <button type="button" onclick="addOperacao()" id="idDivisao">/</button>
-            </div>
-            <div>
-                <button type="button" onclick="addOperacao()" id="idsqrt">√x</button>
-            </div>
-            <div>
-                <button type="button" onclick="addOperacao()" id="idPorce">%</button>
-            </div>
-            <div>
-                <button type="button" onclick="addOperacao()" id="idInverso">1/x</button>
-            </div>
-        </div>
-        -->
+        </section>        
     </body>
 </html>

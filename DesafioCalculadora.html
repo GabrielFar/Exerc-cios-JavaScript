@@ -10,59 +10,137 @@
        
         div {
             display: inline;
+        }
+         section{
             padding: 2px;
-        }
-        #idNum {
-            margin: 0px;
-            border: 1px solid black;
-        }
-        #idBotao{
-            text-align: center;
-        }
-        section{
-            padding: 1px;
             margin: 2px;
+            margin-right: 2px;
+            width: 50vw 
         }
-        
+        .clNum{
+            margin: 0px;
+            padding: 2px;
+            padding-bottom: 5px;
+            padding-right: 0px;
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 25vw;
+        }
+        .clOpe{
+            margin: 0px;
+            padding: 2px;
+            padding-bottom: 5px;
+            padding-right: 0px;
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 25vw;
+        }
+        .clMem{
+            margin: 0px;
+            padding: 2px;
+            padding-bottom: 5px;
+            padding-right: 3px;
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 25vw;
+        }
+        #idInput{
+            margin-left: 3px;
+        }
+        #idBotaoApagar{
+            padding-top:0px;
+        }
+        #idApagar{
+            padding-top: 3px;
+        }
     </style>
     <body>
-        <section>
-            <div>
-                <div id="idNum">
-                    <button type="button" onclick="addNumero()" id="idBotao">7</button>
-                </div>
-                <div id="idNum">
-                    <button type="button" onclick="addNumero()" id="idBotao">8</button>
-                </div>
-                <div id="idNum">
-                    <button type="button" onclick="addNumero()" id="idBotao">9</button>
-                </div>
+        <form action="">
+            <input type="text" id="idInput">
+        </form>
+        <section>            
+            <div class="clOpe">
+                <button type="button" onclick="addOpe()">%</button>
+            </div>
+            <div class="clOpe">
+                <button type="button" onclick="addOpe()">√</button>
+            </div>
+            <div class="clOpe">
+                <button type="button" onclick="addOpe()">x^2</button>
+            </div>
+            <div class="clOpe">
+                <button type="button" onclick="addOpe()">/</button>
+            </div> 
+            <div class="clMem" id="idApagar">
+                <button type="button" onclick="addOpe()" id="idBotaoApagar">⌫</button>
+            </div>              
+        </section>
+        <section>            
+            <div class="clNum">
+                <button type="button" onclick="addNumero()">7</button>
+            </div>
+            <div class="clNum">
+                <button type="button" onclick="addNumero()">8</button>
+            </div>
+            <div class="clNum">
+                <button type="button" onclick="addNumero()">9</button>
+            </div>
+            <div class="clOpe">
+                <button type="button" onclick="addOpe()">*</button>
+            </div>
+            <div class="clMem">
+                <button type="button" onclick="addOpe()">MS</button>
             </div>
         </section>
         <section>
-            <div>
-                <div id="idNum">
-                    <button type="button" onclick="addNumero()" id="idBotao">4</button>
-                </div>
-                <div id="idNum">
-                    <button type="button" onclick="addNumero()" id="idBotao">5</button>
-                </div>
-                <div id="idNum">
-                    <button type="button" onclick="addNumero()" id="idBotao">6</button>
-                </div>
+            <div class="clNum">
+                <button type="button" onclick="addNumero()">4</button>
+            </div>
+            <div class="clNum">
+                <button type="button" onclick="addNumero()">5</button>
+            </div>
+            <div class="clNum">
+                <button type="button" onclick="addNumero()">6</button>
+            </div>
+            <div class="clOpe">
+                <button type="button" onclick="addOpe()">-</button>
+            </div>
+            <div class="clMem">
+                <button type="button" onclick="addOpe()">M+</button>
             </div>
         </section>
         <section>
-            <div>
-                <div id="idNum">
-                    <button type="button" onclick="addNumero()" id="idBotao">1</button>
-                </div>
-                <div id="idNum">
-                    <button type="button" onclick="addNumero()" id="idBotao">2</button>
-                </div>
-                <div id="idNum">
-                    <button type="button" onclick="addNumero()" id="idBotao">3</button>
-                </div>
+            <div class="clNum">
+                <button type="button" onclick="addNumero()">1</button>
+            </div>
+            <div class="clNum">
+                <button type="button" onclick="addNumero()">2</button>
+            </div>
+            <div class="clNum">
+                <button type="button" onclick="addNumero()">3</button>
+            </div>
+            <div class="clOpe">
+                <button type="button" onclick="addOpe()">+</button>
+            </div>
+            <div class="clMem">
+                <button type="button" onclick="addOpe()">M-</button>
+            </div>
+        </section> 
+        <section>
+            <div class="clOpe">
+                <button type="button" onclick="addOpe()">.</button>
+            </div>
+            <div class="clNum">
+                <button type="button" onclick="addNumero()">0</button>
+            </div>
+            <div class="clOpe">
+                <button type="button" onclick="addOpe()">1/x</button>
+            </div>
+            <div class="clOpe">
+                <button type="button" onclick="addOpe()">=</button>
+            </div>
+            <div class="clMem">
+                <button type="button" onclick="addOpe()">MR</button>
             </div>
         </section>        
     </body>

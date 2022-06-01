@@ -7,18 +7,25 @@
         <title>Calculadora</title>
     </head>
     <style>
-       
         div {
             display: inline;
+            position: right;
         }
-         section{
+        section{
             padding: 2px;
             margin: 2px;
+            margin-right: 0px;
+            text-align: justify;
             margin-right: 2px;
-            width: 50vw 
+            width: 183px            
+        }
+        fieldset{
+            width: 200px;
+            padding-right: 1px;
         }
         .clNum{
             margin: 0px;
+            margin-right: 5px;
             padding: 2px;
             padding-bottom: 5px;
             padding-right: 0px;
@@ -44,8 +51,9 @@
             border-radius: 5px;
             width: 25vw;
         }
-        #idInput{
+        #idTela{
             margin-left: 3px;
+            width: 130px;
         }
         #idBotaoApagar{
             padding-top:0px;
@@ -53,95 +61,162 @@
         #idApagar{
             padding-top: 3px;
         }
+        #idZero{
+            margin: 0px;
+            margin-left: 5px;
+        }
     </style>
     <body>
-        <form action="">
-            <input type="text" id="idInput">
-        </form>
-        <section>            
-            <div class="clOpe">
-                <button type="button" onclick="por()">%</button>
-            </div>
-            <div class="clOpe">
-                <button type="button" onclick="raiz()">√</button>
-            </div>
-            <div class="clOpe">
-                <button type="button" onclick="exp()">x^2</button>
-            </div>
-            <div class="clOpe">
-                <button type="button" onclick="divisao()">/</button>
-            </div> 
-            <div class="clMem" id="idApagar">
-                <button type="button" onclick="apaga()" id="idBotaoApagar">⌫</button>
-            </div>              
-        </section>
-        <section>            
-            <div class="clNum">
-                <button type="button" onclick="7()">7</button>
-            </div>
-            <div class="clNum">
-                <button type="button" onclick="8()">8</button>
-            </div>
-            <div class="clNum">
-                <button type="button" onclick="9()">9</button>
-            </div>
-            <div class="clOpe">
-                <button type="button" onclick="vezes()">*</button>
-            </div>
-            <div class="clMem">
-                <button type="button" onclick="memStore()">MS</button>
-            </div>
-        </section>
-        <section>
-            <div class="clNum">
-                <button type="button" onclick="4()">4</button>
-            </div>
-            <div class="clNum">
-                <button type="button" onclick="5()">5</button>
-            </div>
-            <div class="clNum">
-                <button type="button" onclick="6()">6</button>
-            </div>
-            <div class="clOpe">
-                <button type="button" onclick="menos()">-</button>
-            </div>
-            <div class="clMem">
-                <button type="button" onclick="memMais()">M+</button>
-            </div>
-        </section>
-        <section>
-            <div class="clNum">
-                <button type="button" onclick="1()">1</button>
-            </div>
-            <div class="clNum">
-                <button type="button" onclick="2()">2</button>
-            </div>
-            <div class="clNum">
-                <button type="button" onclick="3()">3</button>
-            </div>
-            <div class="clOpe">
-                <button type="button" onclick="mais()">+</button>
-            </div>
-            <div class="clMem">
-                <button type="button" onclick="mamMenos()">M-</button>
-            </div>
-        </section> 
-        <section>
-            <div class="clOpe">
-                <button type="button" onclick="ponto()">.</button>
-            </div>
-            <div class="clNum">
-                <button type="button" onclick="0()">0</button>
-            </div>
-            <div class="clOpe">
-                <button type="button" onclick="inver()">1/x</button>
-            </div>
-            <div class="clOpe">
-                <button type="button" onclick="igual()">=</button>
-            </div>
-            <div class="clMem">
-                <button type="button" onclick="memRecall()">MR</button>
-            </div>
-        </section>        
+        <fieldset>
+            <form action="">
+                <input type="text" id="idTela">
+                <div class="clMem" id="idApagar">
+                    <button type="button" onclick="apaga()" id="idBotaoApagar">⌫</button>
+                </div>    
+            </form>
+            <section>            
+                <div class="clOpe">
+                    <button type="button" onclick="por()">%</button>
+                </div>
+                <div class="clOpe">
+                    <button type="button" onclick="raiz()">√</button>
+                </div>
+                <div class="clOpe">
+                    <button type="button" onclick="exp()">x^2</button>
+                </div>
+                <div class="clOpe">
+                    <button type="button" onclick="divisao()">/</button>
+                </div> 
+                <div class="clMem">
+                    <button type="button" onclick="memClear()">MC</button>
+                </div>   
+            </section>
+            <section>            
+                <div class="clNum">
+                    <button type="button" onclick="sete()">7</button>
+                </div>
+                <div class="clNum">
+                    <button type="button" onclick="oito()">8</button>
+                </div>
+                <div class="clNum">
+                    <button type="button" onclick="nove()">9</button>
+                </div>
+                <div class="clOpe">
+                    <button type="button" onclick="vezes()">*</button>
+                </div>
+                <div class="clMem">
+                    <button type="button" onclick="memStore()">MS</button>
+                </div>
+            </section>
+            <section>
+                <div class="clNum">
+                    <button type="button" onclick="quatro()">4</button>
+                </div>
+                <div class="clNum">
+                    <button type="button" onclick="cinco()">5</button>
+                </div>
+                <div class="clNum">
+                    <button type="button" onclick="seis()">6</button>
+                </div>                
+                <div class="clOpe">
+                    <button type="button" onclick="mais()">+</button>
+                </div>
+                <div class="clMem">
+                    <button type="button" onclick="memMais()">M+</button>
+                </div>
+            </section>
+            <section>
+                <div class="clNum">
+                    <button type="button" onclick="um()">1</button>
+                </div>
+                <div class="clNum">
+                    <button type="button" onclick="dois()">2</button>
+                </div>
+                <div class="clNum">
+                    <button type="button" onclick="tres()">3</button>
+                </div>
+                <div class="clOpe">
+                    <button type="button" onclick="menos()">-</button>
+                </div>
+                <div class="clMem">
+                    <button type="button" onclick="memMenos()">M-</button>
+                </div>
+            </section> 
+            <section>
+                <div class="clOpe">
+                    <button type="button" onclick="ponto()">.</button>
+                </div>
+                <div class="clNum" id="idZero">
+                    <button type="button" onclick="zero()">0</button>
+                </div>
+                <div class="clOpe">
+                    <button type="button" onclick="inver()">1/x</button>
+                </div>
+                <div class="clOpe">
+                    <button type="button" onclick="igual()">=</button>
+                </div>
+                <div class="clMem">
+                    <button type="button" onclick="memRecall()">MR</button>
+                </div>
+            </section> 
+        </fieldset>  
+        <script>
+            var tela = document.querySelector("#idTela")
+            var calculo
+            function um() {
+                tela.value = tela.value + 1
+            }
+            function dois() {
+                tela.value = tela.value + 2
+            }
+            function tres() {
+                tela.value = tela.value + 3
+            }
+            function quatro() {
+                tela.value = tela.value + 4
+            }
+            function cinco() {
+                tela.value = tela.value + 5
+            }
+            function seis() {
+                tela.value = tela.value + 6
+            }
+            function sete() {
+                tela.value = tela.value + 7
+            }
+            function oito() {
+                tela.value = tela.value + 8
+            }
+            function nove() {
+                tela.value = tela.value + 9
+            }
+            function zero() {
+                tela.value = tela.value + 0
+            }
+
+            var memoria = 0
+            var placeHolder = 0
+            function memStore() {
+                memoria = Number(tela.value)
+                tela.value = ""
+            }
+            function memRecall() {
+                tela.value = memoria
+            }
+            function memMais() {
+                placeHolder = Number(tela.value)
+                memoria = memoria + placeHolder
+                tela.value = ""
+            }
+            function memMenos() {
+                placeHolder = Number(tela.value)
+                memoria = memoria - placeHolder
+                tela.value = ""
+            }
+            function memClear() {
+                memoria = ""
+            }
+            
+        </script>     
     </body>
 </html>

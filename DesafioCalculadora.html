@@ -66,7 +66,7 @@
             <section>
                 <form action="">
                     <input type="text" id="idTela">
-                    <div id="idApaga" onclick="apaga()">⌫</div>    
+                    <div id="idApaga" onclick="apagar()">⌫</div>    
                 </form>
             </section>
             <section>
@@ -187,17 +187,7 @@
                     resultado = placeHolderOperacoes * Number(tela.value)
                 }
                 if (contaDividir > 0) {
-                    resultado.toFixed(2) = placeHolderOperacoes1 / Number(tela.value)
-                }
-
-                if (contaRaiz > 0) {
-                    resultado = placeHolderOperacoes - Number(tela.value)
-                }
-                if (contaExp > 0) {
-                    resultado = placeHolderOperacoes * Number(tela.value)
-                }
-                if (contaInver > 0) {
-                    resultado = placeHolderOperacoes / Number(tela.value)
+                    resultado = (placeHolderOperacoes / Number(tela.value)).toFixed(2)
                 }
                 tela.value = resultado               
                 
@@ -209,14 +199,12 @@
                 contaRaiz = 0
                 contaExp = 0
                 contaInver = 0
-                console.log(resultado);
             }
             
             function mais() {
                 contaMais++
                 placeHolderOperacoes = Number(tela.value)
                 tela.value = ""
-                console.log(resultado);
             }
 
             function menos() {
@@ -238,21 +226,22 @@
             }
 
             function por() {
-                placeHolderOperacoes = Number(tela.value)
+                let por = Number(tela.value)
+                console.log(placeHolderOperacoes);
+                console.log(por);
                 if (contaMais > 0) {
-                    resultado = placeHolderOperacoes + (placeHolderOperacoes*(placeHolderOperacoes/100))
+                    resultado = placeHolderOperacoes + (por*(placeHolderOperacoes/100))
                 }
                 if (contaMenos > 0) {
-                    resultado = placeHolderOperacoes - (placeHolderOperacoes*(placeHolderOperacoes/100))
+                    resultado = placeHolderOperacoes - (por*(placeHolderOperacoes/100))
                 }
                 if (contaVezes > 0) {
-                    resultado = placeHolderOperacoes * (placeHolderOperacoes*(placeHolderOperacoes/100))
+                    resultado = placeHolderOperacoes * (por/100)
                 }
                 if (contaDividir > 0) {
-                    resultado.toFixed(2) = placeHolderOperacoes / (placeHolderOperacoes*(placeHolderOperacoes/100))
+                    resultado = (placeHolderOperacoes / (por/100)).toFixed(2)
                 }
                 tela.value = resultado
-                console.log(resultado);
             }
 
             function raiz() {
@@ -272,7 +261,7 @@
                 placeHolderOperacoes = Number(tela.value)
                 tela.value = ""
             }
-            function apaga() {
+            function apagar() {
                 
             }
             

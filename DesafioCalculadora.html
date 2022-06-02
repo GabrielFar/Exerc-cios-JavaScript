@@ -9,155 +9,100 @@
     <style>
         div {
             display: inline;
-            position: right;
+            border-color: black;
+            border-style: solid;
+            border-radius: 5px;
+            padding-left: 2px;
+            padding-right: 2px;
+            position: relative;
+        }
+        div:hover{
+            background-color: antiquewhite;
         }
         section{
             padding: 2px;
             margin: 2px;
-            margin-right: 0px;
-            text-align: justify;
-            margin-right: 2px;
-            width: 183px            
+            text-align: left;                       
         }
         fieldset{
             width: 200px;
-            padding-right: 1px;
         }
-        .clNum{
-            margin: 0px;
-            margin-right: 5px;
-            padding: 2px;
-            padding-bottom: 5px;
-            padding-right: 0px;
-            border: 1px solid black;
-            border-radius: 5px;
-            width: 25vw;
+        /*Definição dos tamanhos dos botões*/
+        .clBotaoSize1{
+            padding-left: 10px;
+            padding-right: 10px;
         }
-        .clOpe{
-            margin: 0px;
-            padding: 2px;
-            padding-bottom: 5px;
-            padding-right: 0px;
-            border: 1px solid black;
-            border-radius: 5px;
-            width: 25vw;
+        .clBotaoSize2{
+            padding-left: 7px;
+            padding-right: 7px;
         }
-        .clMem{
-            margin: 0px;
-            padding: 2px;
-            padding-bottom: 5px;
+        .clBotaoSize3{
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        .clBotaoSize4{
+            padding-left: 11px;
+            padding-right: 11px;
+        }
+        #idMemMenos{
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        #idMS, #idExpo, #idMemMais{
+            padding-left: 3px;
             padding-right: 3px;
-            border: 1px solid black;
-            border-radius: 5px;
-            width: 25vw;
+        }
+        #idInver,  #idApaga{
+            padding-left: 4px;
+            padding-right: 4px;
         }
         #idTela{
-            margin-left: 3px;
             width: 130px;
         }
-        #idBotaoApagar{
-            padding-top:0px;
-        }
-        #idApagar{
-            padding-top: 3px;
-        }
-        #idZero{
-            margin: 0px;
-            margin-left: 5px;
-        }
+       
     </style>
     <body>
         <fieldset>
-            <form action="">
-                <input type="text" id="idTela">
-                <div class="clMem" id="idApagar">
-                    <button type="button" onclick="apaga()" id="idBotaoApagar">⌫</button>
-                </div>    
-            </form>
-            <section>            
-                <div class="clOpe">
-                    <button type="button" onclick="por()">%</button>
-                </div>
-                <div class="clOpe">
-                    <button type="button" onclick="raiz()">√</button>
-                </div>
-                <div class="clOpe">
-                    <button type="button" onclick="exp()">x^2</button>
-                </div>
-                <div class="clOpe">
-                    <button type="button" onclick="divisao()">/</button>
-                </div> 
-                <div class="clMem">
-                    <button type="button" onclick="memClear()">MC</button>
-                </div>   
-            </section>
-            <section>            
-                <div class="clNum">
-                    <button type="button" onclick="sete()">7</button>
-                </div>
-                <div class="clNum">
-                    <button type="button" onclick="oito()">8</button>
-                </div>
-                <div class="clNum">
-                    <button type="button" onclick="nove()">9</button>
-                </div>
-                <div class="clOpe">
-                    <button type="button" onclick="vezes()">*</button>
-                </div>
-                <div class="clMem">
-                    <button type="button" onclick="memStore()">MS</button>
-                </div>
+            <section>
+                <form action="">
+                    <input type="text" id="idTela">
+                    <div id="idApaga" onclick="apaga()">⌫</div>    
+                </form>
             </section>
             <section>
-                <div class="clNum">
-                    <button type="button" onclick="quatro()">4</button>
-                </div>
-                <div class="clNum">
-                    <button type="button" onclick="cinco()">5</button>
-                </div>
-                <div class="clNum">
-                    <button type="button" onclick="seis()">6</button>
-                </div>                
-                <div class="clOpe">
-                    <button type="button" onclick="mais()">+</button>
-                </div>
-                <div class="clMem">
-                    <button type="button" onclick="memMais()">M+</button>
-                </div>
+                <div class="clBotaoSize2" onclick="por()">%</div>
+                <div class="clBotaoSize1" onclick="raiz()">√</div>
+                <div id="idExpo" onclick="exp()">x^2</div>
+                <div class="clBotaoSize3" onclick="dividir()">/</div>
+                <div onclick="memClear()">MC</div>            
+            </section>
+            <section> 
+                <div class="clBotaoSize1" onclick="sete()">7</div>
+                <div class="clBotaoSize1" onclick="oito()">8</div>
+                <div class="clBotaoSize1" onclick="nove()">9</div>
+                <div class="clBotaoSize4" onclick="vezes()">*</div>
+                <div id="idMS" onclick="memStore()">MS</div>           
             </section>
             <section>
-                <div class="clNum">
-                    <button type="button" onclick="um()">1</button>
-                </div>
-                <div class="clNum">
-                    <button type="button" onclick="dois()">2</button>
-                </div>
-                <div class="clNum">
-                    <button type="button" onclick="tres()">3</button>
-                </div>
-                <div class="clOpe">
-                    <button type="button" onclick="menos()">-</button>
-                </div>
-                <div class="clMem">
-                    <button type="button" onclick="memMenos()">M-</button>
-                </div>
+                <div class="clBotaoSize1" onclick="quatro()">4</div>
+                <div class="clBotaoSize1" onclick="cinco()">5</div>
+                <div class="clBotaoSize1" onclick="seis()">6</div>
+                <div class="clBotaoSize1" onclick="mais()">+</div>
+                <div id="idMemMais" onclick="memMais()">M+</div>     
+            </section>
+            <section>
+                <div class="clBotaoSize1" onclick="um()">1</div>
+                <div class="clBotaoSize1" onclick="dois()">2</div>
+                <div class="clBotaoSize1" onclick="tres()">3</div>
+                <div class="clBotaoSize3" onclick="menos()">-</div>
+                <div id="idMemMenos" onclick="memMenos()">M-</div>
             </section> 
             <section>
-                <div class="clOpe">
-                    <button type="button" onclick="ponto()">.</button>
-                </div>
-                <div class="clNum" id="idZero">
-                    <button type="button" onclick="zero()">0</button>
-                </div>
-                <div class="clOpe">
-                    <button type="button" onclick="inver()">1/x</button>
-                </div>
-                <div class="clOpe">
-                    <button type="button" onclick="igual()">=</button>
-                </div>
-                <div class="clMem">
-                    <button type="button" onclick="memRecall()">MR</button>
-                </div>
+                <div class="clBotaoSize3" onclick="ponto()">.</div>
+                <div class="clBotaoSize1" onclick="zero()">0</div>
+                <div id="idInver" onclick="inver()">1/x</div>
+                <div class="clBotaoSize1" onclick="igual()">=</div>
+                <div id="idMR" onclick="memRecall()">MR</div>
             </section> 
         </fieldset>  
         <script>
@@ -194,6 +139,7 @@
                 tela.value = tela.value + 0
             }
 
+            //memoria
             var memoria = 0
             var placeHolder = 0
             function memStore() {
@@ -215,6 +161,119 @@
             }
             function memClear() {
                 memoria = ""
+            }
+
+            //operações
+            var placeHolderOperacoes = 0
+            var contaMais = 0
+            var contaMenos = 0
+            var contaVezes = 0
+            var contaDividir = 0
+            var contaPorce = 0
+            var contaRaiz = 0
+            var contaExp = 0
+            var contaInver = 0
+            var resultado
+            
+            function igual() {
+
+                if (contaMais > 0) {
+                    resultado = placeHolderOperacoes + Number(tela.value)
+                }
+                if (contaMenos > 0) {
+                    resultado = placeHolderOperacoes - Number(tela.value)
+                }
+                if (contaVezes > 0) {
+                    resultado = placeHolderOperacoes * Number(tela.value)
+                }
+                if (contaDividir > 0) {
+                    resultado.toFixed(2) = placeHolderOperacoes1 / Number(tela.value)
+                }
+
+                if (contaRaiz > 0) {
+                    resultado = placeHolderOperacoes - Number(tela.value)
+                }
+                if (contaExp > 0) {
+                    resultado = placeHolderOperacoes * Number(tela.value)
+                }
+                if (contaInver > 0) {
+                    resultado = placeHolderOperacoes / Number(tela.value)
+                }
+                tela.value = resultado               
+                
+                contaMais = 0
+                contaMenos = 0
+                contaVezes = 0
+                contaDividir = 0
+                contaPorce = 0
+                contaRaiz = 0
+                contaExp = 0
+                contaInver = 0
+                console.log(resultado);
+            }
+            
+            function mais() {
+                contaMais++
+                placeHolderOperacoes = Number(tela.value)
+                tela.value = ""
+                console.log(resultado);
+            }
+
+            function menos() {
+                contaMenos++
+                placeHolderOperacoes = Number(tela.value)
+                tela.value = ""
+            }
+
+            function vezes() {
+                contaVezes++
+                placeHolderOperacoes = Number(tela.value)
+                tela.value = ""
+            }
+
+            function dividir() {
+                contaDividir++
+                placeHolderOperacoes = Number(tela.value)
+                tela.value = ""
+            }
+
+            function por() {
+                placeHolderOperacoes = Number(tela.value)
+                if (contaMais > 0) {
+                    resultado = placeHolderOperacoes + (placeHolderOperacoes*(placeHolderOperacoes/100))
+                }
+                if (contaMenos > 0) {
+                    resultado = placeHolderOperacoes - (placeHolderOperacoes*(placeHolderOperacoes/100))
+                }
+                if (contaVezes > 0) {
+                    resultado = placeHolderOperacoes * (placeHolderOperacoes*(placeHolderOperacoes/100))
+                }
+                if (contaDividir > 0) {
+                    resultado.toFixed(2) = placeHolderOperacoes / (placeHolderOperacoes*(placeHolderOperacoes/100))
+                }
+                tela.value = resultado
+                console.log(resultado);
+            }
+
+            function raiz() {
+                contaRaiz++
+                placeHolderOperacoes = Number(tela.value)
+                tela.value = ""
+            }
+
+            function exp() {
+                contaExp++
+                placeHolderOperacoes = Number(tela.value)
+                tela.value = ""
+            }
+
+            function inver() {
+                contaInver++
+                placeHolderOperacoes = Number(tela.value)
+                tela.value = ""
+            }
+            function apaga() {
+                
             }
             
         </script>     

@@ -8,32 +8,41 @@
     </head>
     <body>
         <form action="">
+            <button type="button" onclick="gerar()" id="idBotaoVerificar">Gerar Números Aleatórios</button>
+            <br><br>
+
             <label for="idChave">Insira a Chave</label><br>
             <input type="number" id="idChave">
             <br><br>
             
-            <button type="button" onclick="gerar()">Gerar Números Aleatórios</button>
+            <button type="button" onclick="verificar()">verificar</button>
             <br><br>
-
-            <output id="idOut"></output>
+            
+            <output id="idOut"></output>            
         </form>
         <script>
             var out = document.querySelector("#idOut")
-            
+             var numeros = []
+
             function gerar() {                    
-                let chave = document.querySelector("#idChave").value
-                let numeros = []
-                let texto = ""
-                let contaAchado = 0
+                
                 
                 for (let i = 0; i < 30; i++) {
                     
-                    let gerarRandom = (parseInt(Math.random() * (16 - 1)) + 1)
+                    let gerarRandom = (parseInt(Math.random() * 15 + 1))
 
                     let num = gerarRandom
                     numeros[i] = num 
                 }
-                
+
+                document.querySelector("#idBotaoVerificar").disabled = true
+            }
+
+            function verificar() {
+                let chave = document.querySelector("#idChave").value
+                let texto = ""
+                let contaAchado = 0
+
                 for (let index = 0; index < numeros.length; index++) {
 
                    if (chave == numeros[index]) {
@@ -41,9 +50,10 @@
                        contaAchado++
                    }                    
                 }
-                out.value = "Foram encontrados " + contaAchado + " " + chave + " nas posições no índice: " + texto
-            }
-        
+                console.table(numeros);
+                out.value = "Foram encontrados " + contaAchado + " " + chave + " nas posições no índice: " + texto    
+            }                
+                   
         </script>
     </body>
 </html>

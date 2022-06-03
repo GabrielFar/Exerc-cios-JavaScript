@@ -8,8 +8,6 @@
     </head>
     <body>
         <form action="">
-            <button type="button" onclick="gerar()" id="idBotaoVerificar">Gerar Números Aleatórios</button>
-            <br><br>
 
             <label for="idChave">Insira a Chave</label><br>
             <input type="number" id="idChave">
@@ -22,20 +20,14 @@
         </form>
         <script>
             var out = document.querySelector("#idOut")
-             var numeros = []
+            var numeros = []
 
-            function gerar() {                    
+            for (let i = 0; i < 30; i++) {
                 
-                
-                for (let i = 0; i < 30; i++) {
-                    
-                    let gerarRandom = (parseInt(Math.random() * 15 + 1))
+                let gerarRandom = (parseInt(Math.random() * 15 + 1))
 
-                    let num = gerarRandom
-                    numeros[i] = num 
-                }
-
-                document.querySelector("#idBotaoVerificar").disabled = true
+                let num = gerarRandom
+                numeros[i] = num 
             }
 
             function verificar() {
@@ -49,11 +41,10 @@
                        texto = texto + index + " "
                        contaAchado++
                    }                    
-                }
-                console.table(numeros);
+                }                
                 out.value = "Foram encontrados " + contaAchado + " " + chave + " nas posições no índice: " + texto    
             }                
-                   
+            console.table(numeros);       
         </script>
     </body>
 </html>

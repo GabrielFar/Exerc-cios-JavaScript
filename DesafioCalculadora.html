@@ -17,7 +17,7 @@
             position: relative;
         }
         div:hover{
-            background-color: antiquewhite;
+            background-color: rgb(166, 247, 222);
         }
         section{
             padding: 2px;
@@ -104,10 +104,9 @@
                 <div class="clBotaoSize1" onclick="igual()">=</div>
                 <div id="idMR" onclick="memRecall()">MR</div>
             </section> 
-        </fieldset>  
+        </fieldset> 
         <script>
             var tela = document.querySelector("#idTela")
-            var calculo
             function um() {
                 tela.value = tela.value + 1
             }
@@ -137,6 +136,9 @@
             }
             function zero() {
                 tela.value = tela.value + 0
+            }
+            function ponto() {
+                tela.value = tela.value + "."
             }
 
             //memoria
@@ -169,10 +171,6 @@
             var contaMenos = 0
             var contaVezes = 0
             var contaDividir = 0
-            var contaPorce = 0
-            var contaRaiz = 0
-            var contaExp = 0
-            var contaInver = 0
             var resultado
             
             function igual() {
@@ -195,10 +193,6 @@
                 contaMenos = 0
                 contaVezes = 0
                 contaDividir = 0
-                contaPorce = 0
-                contaRaiz = 0
-                contaExp = 0
-                contaInver = 0
             }
             
             function mais() {
@@ -227,42 +221,44 @@
 
             function por() {
                 let por = Number(tela.value)
-                console.log(placeHolderOperacoes);
-                console.log(por);
                 if (contaMais > 0) {
-                    resultado = placeHolderOperacoes + (por*(placeHolderOperacoes/100))
+                    resultado = placeHolderOperacoes + (placeHolderOperacoes*(por/100))
                 }
                 if (contaMenos > 0) {
-                    resultado = placeHolderOperacoes - (por*(placeHolderOperacoes/100))
+                    resultado = placeHolderOperacoes - (placeHolderOperacoes*(por/100))
                 }
                 if (contaVezes > 0) {
                     resultado = placeHolderOperacoes * (por/100)
                 }
                 if (contaDividir > 0) {
-                    resultado = (placeHolderOperacoes / (por/100)).toFixed(2)
+                    resultado = placeHolderOperacoes / (por/100)
                 }
                 tela.value = resultado
+
+                contaMais = 0
+                contaMenos = 0
+                contaVezes = 0
+                contaDividir = 0
             }
 
             function raiz() {
-                contaRaiz++
-                placeHolderOperacoes = Number(tela.value)
-                tela.value = ""
+                resultado = Math.sqrt(Number(tela.value))
+                tela.value = resultado
             }
 
             function exp() {
-                contaExp++
-                placeHolderOperacoes = Number(tela.value)
-                tela.value = ""
+                placeHolderOperacoes = Number(tela.value)            
+                resultado = placeHolderOperacoes * placeHolderOperacoes 
+                tela.value = resultado
             }
 
             function inver() {
-                contaInver++
-                placeHolderOperacoes = Number(tela.value)
-                tela.value = ""
+                resultado = 1 / Number(tela.value)
+                tela.value = resultado
             }
+
             function apagar() {
-                
+                tela.value = ""
             }
             
         </script>     

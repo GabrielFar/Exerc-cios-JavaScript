@@ -32,23 +32,27 @@
             
             outAviso.value = contTentativas + " Tentativas Restantes"
 
-            if (num < chute) {
+            if (contTentativas == 0) {
+
+                document.querySelector("#idChu").disabled = true
+                document.querySelector("#idBot").disabled = true
+                out.value = "Acabaram as Tentativas! - O número secreto era " + num
+            }else  if (num < chute) {
+
                 out.value = "Número Incorreto - O número secreto é menor do que " + chute
 
             }else if (num > chute) {
                 out.value = "Número Incorreto - O número secreto é maior do que " + chute
 
-            }else{
-                out.value = "Número Correto - O número secreto era " + num
             }
-
-            if (contTentativas == 0) {
-                document.querySelector("#idChu").disabled = true
-                document.querySelector("#idBot").disabled = true
-                out.value = "Número Correto - O número secreto era " + num
-            }
-            contTentativas--
             
+            if (num == chute) {            
+                out.value = "Número Correto - O número secreto era " + num
+                document.querySelector("#idBot").disabled = true
+            }
+           
+            contTentativas--
+
         }
     </script>
 

@@ -155,18 +155,72 @@
     </body>
     <script>
         //Declaração de Variáveis Globais
-        var nome = document.querySelector("#idNome").value
-        var tamanho = document.querySelector("#idTamanho").value
-        var preço = document.querySelector("#idPreço").value
+        var nome
+        var tamanho
+        var preço
         var btLer = document.querySelector("#idBotaoLer")
         var btComparar = document.querySelector("#idBotaoComparar")
 
         var nomes = []
         var tamanhos = []
         var preços = []
-        
+
         //Leitura dos campos da tela
 
-        
+        btLer.onclick = function () {
+            nome = document.querySelector("#idNome").value
+            tamanho = Number(document.querySelector("#idTamanho").value)
+            preço = Number(document.querySelector("#idPreço").value)
+
+            let isNomeValido = validarNome(nome)
+            let isTamanhoValido = validarTamanho(tamanho)
+            let isPreçoValido = validarPreço(preço)
+
+            if (isNomeValido && isTamanhoValido && isPreçoValido) {
+                nomes.push(nome)
+                tamanhos.push(tamanho)
+                preços.push(preço)
+
+                document.querySelector("#idNome").value = ""
+                document.querySelector("#idTamanho").value = ""
+                document.querySelector("#idPreço").value = ""
+
+                console.log(nomes);
+                console.log(tamanhos);
+                console.log(preços);
+            }
+        }
+
+        //Validação de Campos
+
+        function validarNome(nome) {
+            if (nome == "" || nome == "") {
+                alert("Nome Inválido")
+                document.querySelector("#idNome").value = ""
+                document.querySelector("#idNome").focus()
+                return false
+            }
+            return true
+        }
+
+        function validarTamanho(tamanho) {
+            if (tamanho <= 0) {
+                alert("Tamanho Inválido")
+                document.querySelector("#idTamanho").value = ""
+                document.querySelector("#idTamanho").focus()
+                return false
+            }
+            return true
+        }
+
+        function validarPreço(preço) {
+            if (preço <= 0) {
+                alert("Preço Inválido")
+                document.querySelector("#idPreço").value = ""
+                document.querySelector("#idPreço").focus()
+                return false
+            }
+            return true
+        }
     </script>
 </html>

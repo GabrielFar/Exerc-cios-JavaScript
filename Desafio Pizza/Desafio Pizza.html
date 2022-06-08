@@ -85,25 +85,35 @@
             /*Formatação Visual da Página*/
 
             body{
-                padding: 5px;
+                padding: 5px; 
+                background: top;
+                background-repeat: no-repeat;
+                background-image: url(imagem.jpg);
+                background-size: 100vw auto;
+                background-attachment: fixed;
             }
 
             form{
-                background-position: center;  
+               text-align: center;
+               padding-top: 160px;
             }
 
             fieldset{
-                min-width: 232px;
-                max-width: 232px;
-                background: center;
-                background-repeat: no-repeat;
-                background-image: url(imagem.png);
-                background-size: auto 39vh;                        
+                display: inline;
+                width: 232px;   
+                background-color: rgba(255, 255, 255, 0.699);  
+                border-color: black;
+                border-style: dotted;        
+                border-radius: 10px;
+                padding-top: 5px;
+                padding-left: 2px;
+                padding-right: 2px;
             }
 
             input, label, output {
                 display: block;
                 margin: 5px;
+                text-align: left;
             }
 
             input{
@@ -112,7 +122,9 @@
 
             #idBotaoComparar, #idBotaoLer{
                 display: inline;
+                margin-bottom: 5px;
             }
+
         </style>
     </head>
     <body>

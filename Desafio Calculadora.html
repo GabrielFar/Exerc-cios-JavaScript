@@ -147,21 +147,26 @@
             function memStore() {
                 memoria = Number(tela.value)
                 tela.value = ""
+                tela.focus()
             }
             function memRecall() {
+                tela.focus()
                 tela.value = memoria
             }
             function memMais() {
                 placeHolder = Number(tela.value)
                 memoria = memoria + placeHolder
+                tela.focus()
                 tela.value = ""
             }
             function memMenos() {
                 placeHolder = Number(tela.value)
                 memoria = memoria - placeHolder
+                tela.focus()
                 tela.value = ""
             }
             function memClear() {
+                tela.focus()
                 memoria = ""
             }
 
@@ -193,30 +198,35 @@
                 contaMenos = 0
                 contaVezes = 0
                 contaDividir = 0
+                tela.focus()
             }
             
             function mais() {
                 contaMais++
                 placeHolderOperacoes = Number(tela.value)
                 tela.value = ""
+                tela.focus()
             }
 
             function menos() {
                 contaMenos++
                 placeHolderOperacoes = Number(tela.value)
                 tela.value = ""
+                tela.focus()
             }
 
             function vezes() {
                 contaVezes++
                 placeHolderOperacoes = Number(tela.value)
                 tela.value = ""
+                tela.focus()
             }
 
             function dividir() {
                 contaDividir++
                 placeHolderOperacoes = Number(tela.value)
                 tela.value = ""
+                tela.focus()
             }
 
             function por() {
@@ -239,26 +249,31 @@
                 contaMenos = 0
                 contaVezes = 0
                 contaDividir = 0
+                tela.focus()
             }
 
             function raiz() {
                 resultado = Math.sqrt(Number(tela.value))
                 tela.value = resultado
+                tela.focus()
             }
 
             function exp() {
                 placeHolderOperacoes = Number(tela.value)            
                 resultado = placeHolderOperacoes * placeHolderOperacoes 
                 tela.value = resultado
+                tela.focus()
             }
 
             function inver() {
                 resultado = 1 / Number(tela.value)
                 tela.value = resultado
+                tela.focus()
             }
 
             function apagar() {
                 tela.value = ""
+                tela.focus()
             }
             
         </script>     

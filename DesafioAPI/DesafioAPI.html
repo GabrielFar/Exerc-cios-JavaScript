@@ -127,9 +127,12 @@
                 background-color: rgba(255, 255, 255, 0.842);
                 padding: 0px;
                 margin: 5px;
-                width: 700px;
-                margin-left: 350px;
                 text-align: justify;
+            }
+
+            .clFieldOut{
+                display: inline;
+                width: 700px;
             }
 
             .clBotoes{
@@ -168,13 +171,15 @@
                 </div>
                 <div>
                     <label for="idData">Digite a Data de Consulta:</label>
-                    <input type="text" id="idData" placeholder="Exemplo: 06-14-2022">
+                    <input type="text" id="idData" placeholder="Exemplo: 06-14-2022" value="06-14-2022">
                 </div>
                 <div class="clBotoes" id="idBtConsulta">Consultar</div>
             </fieldset>
-            <div class="clOut"><!--Saída do Resultado-->
-                <output id="idOut"></output>
-            </div>
+            <div><!--Saída do Resultado-->
+                <fieldset class="clFieldOut">
+                    <output id="idOut">Resultados</output>
+                </fieldset>
+            </div>    
         </form>
         <script>
             //Declaração de Variáveis Globais

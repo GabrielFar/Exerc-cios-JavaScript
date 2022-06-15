@@ -145,9 +145,9 @@
     <body>
         <form action="">
             <fieldset>
-                <div><!--Lista de Seleção das Moedas Disponíveis-->
-                    <label for="idMoeda">Selecione a Moeda:</label>
-                    <select name="nmMoedas" id="idMoedas">
+                <div><!--Lista de Seleção de Entrada das Moedas Disponíveis-->
+                    <label for="idDeMoedas">Selecione a Moeda:</label>
+                    <select name="nmDeMoedas" id="idDeMoedas">
                         <option value="EUR">Euro</option>
                         <option value="GBP">Libra Esterlina</option>
                         <option value="USD">Dólar Americano</option>
@@ -164,6 +164,25 @@
                     <label for="idData">Digite a Data de Consulta:</label>
                     <input type="text" id="idData" placeholder="Exemplo: 06-14-2022">
                 </div>
+                <div><!--Lista de Seleção de Saída das Moedas Disponíveis-->
+                    <label for="idParaMoedas">Selecione a Moeda:</label>
+                    <select name="nmParaMoedas" id="idParaMoedas">
+                        <option value="EUR">Euro</option>
+                        <option value="GBP">Libra Esterlina</option>
+                        <option value="USD">Dólar Americano</option>
+                        <option value="CAD">Dólar Candense</option>
+                        <option value="AUD">Dólar Australiano</option>
+                        <option value="CHF">Franco Suíço</option>
+                        <option value="DKK">Coroa Dinamarquesa</option>
+                        <option value="JPY">Iene</option>
+                        <option value="NOK">Coroa Norueguesa</option>
+                        <option value="SEK">Coroa Sueca</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="idValor">Digite o Valor Para Conversão:</label>
+                    <input type="number" id="idValor">
+                </div>
                 <div class="clBotoes" id="idBtConsulta">Consultar</div>
                 <div class="clOut"><!--Saída do Resultado-->
                     <output id="idOut"></output>
@@ -172,7 +191,9 @@
         </form>
         <script>
             //Declaração de Variáveis Globais
-            var moeda
+            var deMoeda
+            var paraMoeda
+            var valorConversao
             var data
             var out = document.querySelector("#idOut")
             var btConsultar = document.querySelector("#idBtConsulta")
@@ -188,20 +209,34 @@
             */
         
             btConsultar.onclick = function () {
-                moeda = String(document.querySelector("#idMoedas").value)
+                deMoeda = String(document.querySelector("#idDeMoedas").value)
+                paraMoeda = String(document.querySelector("#idParaMoedas").value)
                 data = document.querySelector("#idData").value
+                valorConversao = Number(document.querySelector("#idValor").value)
 
-                var xhr = new XMLHttpRequest(); 
+                let xhrEntrada = new XMLHttpRequest(); 
 
-                xhr.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='"+moeda+"'&@dataCotacao='"+data+"'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim")
+                xhrEntrada.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='"+deMoeda+"'&@dataCotacao='"+data+"'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim")
 
-                xhr.addEventListener("load", function(){
+                xhrEntrada.addEventListener("load", function(){
                     var resultado = xhr.responseText;
                     resultadoEmJS = JSON.parse(resultado)
                     out.value = gerarOut(resultadoEmJS)
                 })
                 
-                xhr.send()
+                xhrEntrada.send()
+
+                let xhrSaida = new XMLHttpRequest(); 
+
+                xhrSaida.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='"+paraMoeda+"'&@dataCotacao='"+data+"'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim")
+
+                xhrSaida.addEventListener("load", function(){
+                    var resultado = xhr.responseText;
+                    resultadoEmJS = JSON.parse(resultado)
+                    out.value = gerarOut(resultadoEmJS)
+                })
+                
+                xhrSaida.send()
             }
 
             /**
@@ -212,13 +247,7 @@
             */
 
             function gerarOut(){
-
-                textoOut = "É necessário R$"
-
-                   conversao = resultadoEmJS.value[resultadoEmJS.value.length - 1].cotacaoCompra
-                   textoOut = textoOut + conversao + " para comprar 1 " + moeda
-
-                return textoOut
+                ((resultadoEmJS.value[resultadoEmJS.value.length - 1].cotacaoCompra))
             }
         </script>
     </body>

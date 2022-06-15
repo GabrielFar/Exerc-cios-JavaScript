@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            /*CSS Reset*/
+            html,
+            body,
+            p,
+            ol,
+            ul,
+            li,
+            dl,
+            dt,
+            dd,
+            blockquote,
+            figure,
+            fieldset,
+            legend,
+            textarea,
+            pre,
+            iframe,
+            hr,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+            margin: 0;
+            padding: 0;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+            font-size: 100%;
+            font-weight: normal;
+            }
+
+            ul {
+            list-style: none;
+            }
+
+            button,
+            input,
+            select {
+            margin: 0;
+            }
+
+            html {
+            box-sizing: border-box;
+            }
+
+            *, *::before, *::after {
+            box-sizing: inherit;
+            }
+
+            img,
+            video {
+            height: auto;
+            max-width: 100%;
+            }
+
+            iframe {
+            border: 0;
+            }
+
+            table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            }
+
+            td,
+            th {
+            padding: 0;
+            }
+
+            /*Formatação Visual da Página*/
+
+            body{
+                padding: 5px; 
+                background: top;
+                background-repeat: no-repeat;
+                background-image: url(thumb-1920-560981.jpg);
+                background-size: auto;
+                background-attachment: fixed;
+            }
+
+            form{
+               justify-content: center;
+               align-items: center;
+               text-align: center;
+               padding-top: 160px;
+            }
+
+            fieldset{
+                display: inline;
+                width: 232px;
+                background-color: rgba(255, 255, 255, 0.699);  
+                border-color: black;
+                border-style: solid;        
+                border-radius: 10px;
+                padding-top: 5px;
+                padding-left: 2px;
+                padding-right: 2px;
+                padding-bottom: 10px;
+            }
+
+            div{
+                display: block;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                margin: 5px;
+                margin-bottom: 15px;
+            }
+
+            .clBotoes{
+                display: inline;
+                margin: 2px;
+                border: 2px;
+                border-color: rgb(85, 81, 81);
+                border-style: solid;
+                border-radius: 5px;
+                padding: 2px;
+            }
+
+            .clBotoes:hover{
+                background-color: rgba(78, 171, 252, 0.418);
+            }
+
+            .clOut{
+                margin-top: 10px;
+                margin-bottom: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="">
+            <fieldset>
+                <div><!--Lista de Seleção das Moedas Disponíveis-->
+                    <label for="idMoeda">Selecione a Moeda:</label>
+                    <select name="nmMoedas" id="idMoedas">
+                        <option value="EUR">Euro</option>
+                        <option value="GBP">Libra Esterlina</option>
+                        <option value="USD">Dólar Americano</option>
+                        <option value="CAD">Dólar Candense</option>
+                        <option value="AUD">Dólar Australiano</option>
+                        <option value="CHF">Franco Suíço</option>
+                        <option value="DKK">Coroa Dinamarquesa</option>
+                        <option value="JPY">Iene</option>
+                        <option value="NOK">Coroa Norueguesa</option>
+                        <option value="SEK">Coroa Sueca</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="idData">Digite a Data de Consulta:</label>
+                    <input type="text" id="idData" placeholder="Exemplo: 06-14-2022">
+                </div>
+                <div class="clBotoes" id="idBtConsulta">Consultar</div>
+                <div class="clOut"><!--Saída do Resultado-->
+                    <output id="idOut"></output>
+                </div>
+            </fieldset> 
+        </form>
+        <script>
+            //Declaração de Variáveis Globais
+            var moeda
+            var data
+            var out = document.querySelector("#idOut")
+            var btConsultar = document.querySelector("#idBtConsulta")
+            var resultadoEmJS
+            var conversao
+            var textoOut = "|| "
+
+            /**
+            * Rotina de Consulta
+            * Descrição: Obtenção de Dados da Tela e Consulta dos Valores no Link Do Banco Central Do Brasil
+            * Parâmetros: none
+            * Retorno: none
+            */
+        
+            btConsultar.onclick = function () {
+                moeda = String(document.querySelector("#idMoedas").value)
+                data = document.querySelector("#idData").value
+
+                var xhr = new XMLHttpRequest(); 
+
+                xhr.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='"+moeda+"'&@dataCotacao='"+data+"'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim")
+
+                xhr.addEventListener("load", function(){
+                    var resultado = xhr.responseText;
+                    resultadoEmJS = JSON.parse(resultado)
+                    out.value = gerarOut(resultadoEmJS)
+                })
+                
+                xhr.send()
+            }
+
+            /**
+            * Rotina de Ttexto de Saída
+            * Descrição: Geração do Texto de Saída
+            * Parâmetros: none
+            * Retorno: textoOut
+            */
+
+            function gerarOut(){
+
+                textoOut = "É necessário R$"
+
+                   conversao = resultadoEmJS.value[resultadoEmJS.value.length - 1].cotacaoCompra
+                   textoOut = textoOut + conversao + " para comprar 1 " + moeda
+
+                return textoOut
+            }
+        </script>
+    </body>
+</html>

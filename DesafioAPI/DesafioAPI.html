@@ -196,7 +196,7 @@
             * Parâmetros: none
             * Retorno: none
             */
-               
+        
             btConsultar.onclick = function () {
                 moeda = String(document.querySelector("#idMoedas").value)
                 data = document.querySelector("#idData").value
@@ -207,7 +207,6 @@
 
                 xhr.addEventListener("load", function(){
                     var resultado = xhr.responseText;
-                    console.log(resultado)
                     resultadoEmJS = JSON.parse(resultado)
                     out.value = gerarOut(resultadoEmJS)
                 })

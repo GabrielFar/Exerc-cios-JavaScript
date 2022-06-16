@@ -146,7 +146,7 @@
         <form action="">
             <fieldset>
                 <div><!--Lista de Seleção de Entrada das Moedas Disponíveis-->
-                    <label for="idDeMoedas">Selecione a Moeda:</label>
+                    <label for="idDeMoedas">Selecione a Moeda de Entrada:</label>
                     <select name="nmDeMoedas" id="idDeMoedas">
                         <option value="EUR">Euro</option>
                         <option value="GBP">Libra Esterlina</option>
@@ -162,10 +162,10 @@
                 </div>
                 <div>
                     <label for="idData">Digite a Data de Consulta:</label>
-                    <input type="text" id="idData" placeholder="Exemplo: 06-14-2022">
+                    <input type="text" id="idData" placeholder="Exemplo: 06-14-2022" value="06-15-2022">
                 </div>
                 <div><!--Lista de Seleção de Saída das Moedas Disponíveis-->
-                    <label for="idParaMoedas">Selecione a Moeda:</label>
+                    <label for="idParaMoedas">Selecione a Moeda a ser Convertida:</label>
                     <select name="nmParaMoedas" id="idParaMoedas">
                         <option value="EUR">Euro</option>
                         <option value="GBP">Libra Esterlina</option>
@@ -193,13 +193,14 @@
             //Declaração de Variáveis Globais
             var deMoeda
             var paraMoeda
-            var valorConversao
             var data
             var out = document.querySelector("#idOut")
             var btConsultar = document.querySelector("#idBtConsulta")
-            var resultadoEmJS
-            var conversao
-            var textoOut = "|| "
+            var conversao = 0
+            var valorConversao
+            var textoOut
+            var OBJMoedaDeEntrada
+            var OBJorMoedaDeSaida
 
             /**
             * Rotina de Consulta
@@ -208,35 +209,27 @@
             * Retorno: none
             */
         
-            btConsultar.onclick = function () {
+            btConsultar.onclick = async function () {
                 deMoeda = String(document.querySelector("#idDeMoedas").value)
                 paraMoeda = String(document.querySelector("#idParaMoedas").value)
                 data = document.querySelector("#idData").value
                 valorConversao = Number(document.querySelector("#idValor").value)
 
-                let xhrEntrada = new XMLHttpRequest(); 
+                OBJMoedaDeEntrada = await moedaDeEntrada(deMoeda)
 
-                xhrEntrada.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='"+deMoeda+"'&@dataCotacao='"+data+"'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim")
+                OBJorMoedaDeSaida = await moedaDeSaida(paraMoeda)
 
-                xhrEntrada.addEventListener("load", function(){
-                    var resultado = xhr.responseText;
-                    resultadoEmJS = JSON.parse(resultado)
-                    out.value = gerarOut(resultadoEmJS)
-                })
-                
-                xhrEntrada.send()
+                out.value = gerarOut(valorConversao)
+            }
 
-                let xhrSaida = new XMLHttpRequest(); 
+            async function moedaDeEntrada(deMoeda) {
+                let resposta = await fetch("https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='"+deMoeda+"'&@dataCotacao='"+data+"'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim")
+                return resposta.json()
+            }
 
-                xhrSaida.open("GET", "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='"+paraMoeda+"'&@dataCotacao='"+data+"'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim")
-
-                xhrSaida.addEventListener("load", function(){
-                    var resultado = xhr.responseText;
-                    resultadoEmJS = JSON.parse(resultado)
-                    out.value = gerarOut(resultadoEmJS)
-                })
-                
-                xhrSaida.send()
+            async function moedaDeSaida(paraMoeda) {
+                let resposta = await fetch("https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)?@moeda='"+paraMoeda+"'&@dataCotacao='"+data+"'&$top=100&$format=json&$select=paridadeCompra,paridadeVenda,cotacaoCompra,cotacaoVenda,dataHoraCotacao,tipoBoletim")
+                return resposta.json()
             }
 
             /**
@@ -246,8 +239,13 @@
             * Retorno: textoOut
             */
 
-            function gerarOut(){
-                ((resultadoEmJS.value[resultadoEmJS.value.length - 1].cotacaoCompra))
+            function gerarOut(valorConversao){
+                let valorMoedaDeEntrada = OBJMoedaDeEntrada.value[OBJMoedaDeEntrada.value.length - 1].cotacaoCompra
+                let valorMoedaDeSaida = OBJorMoedaDeSaida.value[OBJorMoedaDeSaida.value.length - 1].cotacaoCompra
+
+                conversao = Number(valorMoedaDeEntrada/valorMoedaDeSaida*valorConversao)
+                textoOut = valorConversao + " " + deMoeda + " é igual a " + conversao.toFixed(2) + " " + paraMoeda
+                return textoOut
             }
         </script>
     </body>

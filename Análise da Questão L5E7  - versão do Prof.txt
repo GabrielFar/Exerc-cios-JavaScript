@@ -1,0 +1,38 @@
+L5E7	
+
+V0:
+
+*Mensagem final de jogo aparece após 4 tentativas
+*Não informa número sorteado ao final da partida
+*Mesmo se o número for apostado for igual ao sorteado, os campos continuam abertos para mais apostas
+*Variável "tentativa" continua a subir, mesmo depois de atingir limite de apostas
+
+V1: 
+
+*Mensagem final de jogo aparece após 3 tentativas
+
+V2:
+
+*"If" na linha 77 passa a limitar variável "tentativa", porém ainda é possível realizar mais apostas após o limite
+
+V3:
+
+*Limitação das apostas em 3
+*Chamada de função externa para limitação das tentativas
+
+V4:
+
+*Função para testar a validade do número apostados
+*Adição classe "alerta" para saída "msnout" para quanto o número apostado for inválido
+
+V5:
+
+*Adição de função específica para sortear o número
+*Organização do código, com adição de rotinas e comentários
+
+V6: 
+
+*Adição de dupla função para o botão
+*Adição de função "inicializarJogo" para executar mini tarefas para melhor funcionamento do jogo
+*Se o número apostado for igual ao sorteado, o jogo é finalizado e da a opçao de um novo jogo
+
